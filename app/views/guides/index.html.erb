@@ -1,0 +1,30 @@
+
+<% if @guide.nil? %>
+
+No records found.
+
+<% else %>
+
+State: <%= @guide.state %>
+
+Name: <%= @guide.name %><br>
+
+Payer Name: <%= @guide.payer_name %><br>
+
+Covered: <%= @guide.covered? ? "Yes" : "No" %><br>
+
+Coverage Notes: <%= @guide.coverage_notes %><br>
+
+Current Link: <%= @guide.current_link %><br>
+
+Link Notes: <%= @guide.link_notes %><br>
+
+Prior Authorization: <%= @guide.prior_authorization? ? "Yes" : "No"%><br>
+
+Phone Number: <%= @guide.phone_number %><br>
+
+Fax Number: <%= @guide.fax_number %>
+
+
+<% end %>
+

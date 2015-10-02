@@ -1,1 +1,30 @@
-paywizard
+<%= form_tag guides_path, method: :get do %>
+
+<%= select_tag :state, options_for_select(states) %>
+
+<%= select_tag :payer_name, options_for_select(payer_names) %>
+
+<%= select_tag :name, options_for_select(products) %>
+
+<%= submit_tag "Search"%>
+
+
+<% end %>
+
+
+<br><br><Br>
+<h3>Guide List:</h3>
+
+
+<% @guides.each_with_index do |guide, i| %>
+
+<%= i + 1 %>
+<%= guide.name %>,
+<%= guide.state %>,
+<%= guide.payer_name %>
+
+
+
+
+
+<br><% end %>
