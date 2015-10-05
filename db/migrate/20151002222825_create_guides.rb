@@ -6,6 +6,7 @@ class CreateGuides < ActiveRecord::Migration
       t.string :contact
       t.string :medicaid_ffs
       t.string :managed_care_medicaid
+      t.string :medical_food_policy
       t.date   :formulary_review_date
       t.boolean :formulary
       t.string :reimbursement_methodology

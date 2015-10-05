@@ -23,6 +23,7 @@
       managed_care_medicaid: "#{(10..90).to_a.sample}%",
       formulary_review_date: Date.today,
       formulary: [true,false].sample,
+      medical_food_policy: "A sentence containing information on the medical food policy for #{product} in #{state}.",
       reimbursement_methodology: "Example reimbursement methodology for #{product} in #{state}.",
       payer_name: payer_names.sample,
       current_link: "http://www.#{product}-#{state}.com",

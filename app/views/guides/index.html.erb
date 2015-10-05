@@ -11,15 +11,25 @@ Name: <%= @guide.name %><br>
 
 Payer Name: <%= @guide.payer_name %><br>
 
-Covered: <%= @guide.covered? ? "Yes" : "No" %><br>
-
-Coverage Notes: <%= @guide.coverage_notes %><br>
+Contact: <%= @guide.contact %><br>
 
 Current Link: <%= @guide.current_link %><br>
 
 Link Notes: <%= @guide.link_notes %><br>
 
-Prior Authorization: <%= @guide.prior_authorization? ? "Yes" : "No"%><br>
+Medicaid FFS: <%= @guide.medicaid_ffs %><br>
+
+Managed Care Medicaid: <%= @guide.managed_care_medicaid %><br>
+
+Managed Care Medicaid: <%= @guide.medical_food_policy %><br>
+
+
+Formulary: <%= @guide.formulary? ? "Yes" : "No" %><br>
+
+Formulary Review Date: <%= @guide.formulary? ? "Yes" : "No" %><br>
+
+Reimbursement Methodology: <%= @guide.reimbursement_methodology %><br>
+
 
 Phone Number: <%= @guide.phone_number %><br>
 
