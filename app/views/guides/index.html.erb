@@ -5,35 +5,32 @@ No records found.
 
 <% else %>
 
-State: <%= @guide.state %>
-
-Name: <%= @guide.name %><br>
-
-Payer Name: <%= @guide.payer_name %><br>
-
-Contact: <%= @guide.contact %><br>
-
-Current Link: <%= @guide.current_link %><br>
-
-Link Notes: <%= @guide.link_notes %><br>
-
-Medicaid FFS: <%= @guide.medicaid_ffs %><br>
-
-Managed Care Medicaid: <%= @guide.managed_care_medicaid %><br>
-
-Managed Care Medicaid: <%= @guide.medical_food_policy %><br>
+<h3>Reimbursement Information for <%= @guide.name %> in <%= @guide.state %> for <%= @guide.payer_name %> </h3>
 
 
-Formulary: <%= @guide.formulary? ? "Yes" : "No" %><br>
+<b>Contact:</b> <%= @guide.contact %><br><br>
 
-Formulary Review Date: <%= @guide.formulary? ? "Yes" : "No" %><br>
+<b>Current Link:</b> <%= @guide.current_link %><br><br>
 
-Reimbursement Methodology: <%= @guide.reimbursement_methodology %><br>
+<b>Link Notes:</b> <%= @guide.link_notes %><br><br>
+
+<b>Medicaid FFS:</b> <%= @guide.medicaid_ffs %><br><br>
+
+<b>Managed Care Medicaid:</b> <%= @guide.managed_care_medicaid %><br><br>
+
+<b>Managed Care Medicaid:</b> <%= @guide.medical_food_policy %><br><br>
 
 
-Phone Number: <%= @guide.phone_number %><br>
+<b>Formulary:</b> <%= @guide.formulary? ? "Yes" : "No" %><br><br>
 
-Fax Number: <%= @guide.fax_number %>
+<b>Formulary Review Date:</b> <%= @guide.formulary? ? "Yes" : "No" %><br><br>
+
+<b>Reimbursement Methodology:</b> <%= @guide.reimbursement_methodology %><br><br>
+
+
+<b>Phone Number:</b> <%= @guide.phone_number %><br><br>
+
+<b>Fax Number:</b> <%= @guide.fax_number %>
 
 
 <% end %>

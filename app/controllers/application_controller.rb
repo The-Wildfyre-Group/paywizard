@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def states
-    ["Maryland", "Georgia", "Louisiana", "California", "Texas"]
+    ["Texas", "New York", "Florida", "Georgia", "Illinois", "Ohio", "North Carolina", "Pennsylvania", "Michigan", "New Jersey"]
   end
   
   def payer_names
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
   
   def products
-    ["Tylenol", "Albuterol", "Adderall", "Acetaminophen", "Ibuprofen"]
+    ["Neocate Infant", "Neocate Junior", "Ketocal", "Duocal", "Liquigen"]
   end
   
    helper_method :states, :payer_names, :products
