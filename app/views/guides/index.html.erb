@@ -23,14 +23,14 @@ No records found.
 
 <b>Formulary:</b> <%= @guide.formulary? ? "Yes" : "No" %><br><br>
 
-<b>Formulary Review Date:</b> <%= @guide.formulary? ? "Yes" : "No" %><br><br>
+<b>Formulary Review Date:</b> <%= "#{@guide.formulary_review_date.strftime("%b")} #{@guide.formulary_review_date.day}, #{@guide.formulary_review_date.year}" %><br><br>
 
 <b>Reimbursement Methodology:</b> <%= @guide.reimbursement_methodology %><br><br>
 
 
-<b>Phone Number:</b> <%= @guide.phone_number %><br><br>
+<b>Phone Number:</b> <%= @guide.phone_number.gsub(" ", ".") %><br><br>
 
-<b>Fax Number:</b> <%= @guide.fax_number %>
+<b>Fax Number:</b> <%= @guide.fax_number.gsub(" ", ".") %>
 
 
 <% end %>
