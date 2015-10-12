@@ -32,7 +32,7 @@ No records found.
 
 <b>Fax Number:</b> <%= @guide.fax_number.gsub(" ", ".") %>
 
-<% chart_object = {"WIC"=>10, "Medicaid FFS"=>35, "Managed Care Medicaid"=> 15, "Private Commercial" =>100}  %>
+<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
 
 <%= pie_chart chart_object %>
 

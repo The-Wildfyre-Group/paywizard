@@ -20,20 +20,21 @@
       name: product,
       #contact: i.odd? ? ([boy_names.sample, last_names.sample].join(" ")) : ([girl_names.sample, last_names.sample].join(" ")),
       contact: "Sandra Brown, MS RD",
-      medicaid_ffs: "#{(10..90).to_a.sample}%",
-      managed_care_medicaid: "#{(10..90).to_a.sample}%",
+      medicaid_ffs: (10..90).to_a.sample,
+      managed_care_medicaid: (10..90).to_a.sample,
+      wic: (10..90).to_a.sample,
+      private_commercial: (10..90).to_a.sample,
       formulary_review_date: Date.today,
       formulary: true,
       medical_food_policy: "A sentence containing information on the medical food policy for #{product} in #{state}.",
       reimbursement_methodology: "AWP - 10%",
       payer_name: payer_names.sample,
       current_link: "http://www.dshs.state.tx.us/wichd/",
-      old_link: "N/A",
       link_notes: "site was undergoing construction but it works now.",
       #phone_number: "#{(100..999).to_a.sample} #{(100..999).to_a.sample} #{(1000..9999).to_a.sample}",
       phone_number: "214.714.7913",
       #fax_number: "#{(100..999).to_a.sample} #{(100..999).to_a.sample} #{(1000..9999).to_a.sample}")
-      fax_number: "512.341.4419"
+      fax_number: "512.341.4419")
     end
   end
 

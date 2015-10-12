@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
   
   def payer_names
-    ["Aetna", "BlueCross", "Wellpoint", "United Health", "Kaiser"]
+    ["Aetna", "BlueCross", "WIC", "United Health", "Kaiser"]
   end
   
   def products
