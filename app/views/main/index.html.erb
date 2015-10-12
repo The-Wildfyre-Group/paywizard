@@ -191,18 +191,18 @@
 
   <div id="page_content">
     <div id="page_content_inner">
-			
-			<!-- beginning of form -->
-			<%= form_tag guides_path, method: :get do %>
-      	<div class="uk-grid" data-uk-grid-margin>
+      
+      <!-- beginning of form -->
+      <%= form_tag guides_path, method: :get do %>
+        <div class="uk-grid" data-uk-grid-margin>
         <div class="uk-width-3-5 uk-container-center">
-      		<div class="md-card">
+          <div class="md-card">
             <div class="md-card-content">
               
               <!-- search field -->
               <div class="uk-grid" data-uk-grid-margin="">
 
-              	<!-- payer state -->
+                <!-- payer state -->
                 <div class="uk-width-medium-2-10">
                   <%#= select_tag :state, options_for_select(states) %>
                   <select id="product_search_status" data-md-selectize  data-md-selectize-bottom>
@@ -223,7 +223,7 @@
                     <option value="1">In stock</option>
                     <option value="2">Out of stock</option>
                     <option value="3">Ships in 3-5 days</option>
-                	</select>
+                  </select>
                 </div>
                 <!-- end payer Name -->
 
@@ -235,7 +235,7 @@
                     <option value="1">In stock</option>
                     <option value="2">Out of stock</option>
                     <option value="3">Ships in 3-5 days</option>
-                	</select>
+                  </select>
                 </div>
                 <!-- end Products -->
 
@@ -248,14 +248,14 @@
               <!-- end search field -->
 
             </div>
-      		</div>
-      	</div>
-      	</div>
+          </div>
+        </div>
+        </div>
 
-     		<!-- output table and search results -->
-     		<div class="uk-grid" data-uk-grid-margin>
+        <!-- output table and search results -->
+        <div class="uk-grid" data-uk-grid-margin>
         <div class="uk-width-3-5 uk-container-center">
-        	<div class="md-card">
+          <div class="md-card">
             <div class="md-card-content">
               <div class="uk-grid" data-uk-grid-margin>
                 <div class="uk-width-1-1">
@@ -271,20 +271,20 @@
                         </tr>
                       </thead>
                       <tbody>
-                      	<% @guides.each_with_index do |guide, i| %>
+                        <% @guides.each_with_index do |guide, i| %>
                           <tr>
                             <td><span class="heading_c"><%= i + 1 %></span></td>
                             <td>
-                            	<img class="md-user-image dense-image dense-loading" src="http://www.wellnesssolutionsinc.com/Enteral%20Supplements/images/enteral_0090_png.jpg" height="30"alt="">
+                              <img class="md-user-image dense-image dense-loading" src="http://www.wellnesssolutionsinc.com/Enteral%20Supplements/images/enteral_0090_png.jpg" height="30"alt="">
                             </td>
                             <td class="uk-text-large uk-text-nowrap">
-                            	<span class="heading_c"><a href="#"><%= guide.name %></a></span>
+                              <span class="heading_c"><a href="#"><%= guide.name %></a></span>
                             </td>
                             <td class="uk-text-nowrap">
-                            	<span class="heading_c"><%= guide.state %></span>
+                              <span class="heading_c"><%= guide.state %></span>
                             </td>
                             <td>
-                            	<span class="heading_c"><%= guide.payer_name %></span>
+                              <span class="heading_c"><%= guide.payer_name %></span>
                             </td>
                           </tr>
                         <% end %>
@@ -304,14 +304,14 @@
                 </div>
               </div>
             </div>
-      		</div>
-      	</div>
-	      </div>
-	      <!-- end output table and search results -->
+          </div>
+        </div>
+        </div>
+        <!-- end output table and search results -->
 
-	    <% end %>
-	    <!-- end of form -->
+      <% end %>
+      <!-- end of form -->
 
     </div>
-	</div>
+  </div>
 
