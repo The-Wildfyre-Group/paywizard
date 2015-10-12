@@ -3,13 +3,35 @@
  * listed below.
  *
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ 
+ * CSS for Material icon library (ligature and unicode)
+ 
+ * additional styles for plugins -->
+ *= require codemirror/lib/codemirror
+ *= require weather-icons/css/weather-icons.min
+ *= require metrics-graphics/dist/metricsgraphics
+ *= require chartist/dist/chartist.min
+
+ 
+ *= require uikit/css/uikit.almost-flat.min
+ *= require altair/login_page.min
+ *= require icons/flags/flags.min
+
+ * altair admin -->
+ *= require altair/main.min 
+
+ * wildfyre custom -->
+ *= require altair/custom
+
+*= require parsley
+*= require dropzone/dropzone
+
+
  */

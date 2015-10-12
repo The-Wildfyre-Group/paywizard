@@ -1,0 +1,81 @@
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.text-white {color: #fff;}
+
+input.vertical-spacing {
+	padding: 12px 4px
+}
+
+
+.md-input-wrapper>label.vertical-spacing-fixed {
+    top: -6px;
+    font-size: 12px;
+}
+
+
+.logo {
+	font-family: 'Expletus Sans';
+    font-weight: 100;
+    word-spacing: -10px;
+    letter-spacing: 5px;
+}
+
+.logo.large {
+	font-size: 50px; 
+}
+
+.b-radius-2 {border-radius: 2px;}
+.b-radius-4 {border-radius: 4px;}
+
+
+.md-list-addon.full-bordered>li .md-list-addon-element {
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    padding-top: 15px;
+}
+
+.md-list-addon.full-bordered>li {
+    padding-top: 15px;
+    padding-right: 20px;
+}
+
+.md-list-addon.full-bordered>li:last-child .md-list-addon-element {
+    border-bottom: none;
+}
+
+.login_page a:hover {
+    color: #fff;
+}
+
+.bgcolor-white {
+    background: #fff;
+}
+
+.bgcolor-white.light-tint {
+    background: rgba(255, 255, 255, .85);
+}
+
+.bgcolor-light-grey {
+    background: #eee;
+}
+
+.bgcolor-black {
+    background: rgba(0,0,0, .75);
+}
+
+.bgcolor-black.light-tint {
+    background: rgba(0,0,0, .45);
+}
+
+.md-list.uk-contrast.edit-menu >li>a.md-list-content {
+    color: #08c;
+}
+
+.md-list.uk-contrast.edit-menu  .uk-nestable-list>li, .md-list.uk-contrast.edit-menu>li {
+    border-bottom: 1px solid #333;
+}
+
+.uk-text-danger {
+    color: #ee7b79 !important;
+}

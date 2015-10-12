@@ -16,3 +16,5 @@ gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease. Read more: https://github.
 gem 'sdoc', '~> 0.4.0',          group: :doc # bundle exec rake doc:rails generates the API under doc/api.
 gem 'spring',        group: :development # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'google-webfonts' # Add google font library
+gem "parsley-rails" # Add parsley form validation
+gem 'dropzonejs-rails' # Add drag and drop file upload
