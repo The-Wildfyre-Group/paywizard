@@ -25,7 +25,7 @@ No records found.
 
 <b>Formulary Review Date:</b> <%= "#{@guide.formulary_review_date.strftime("%b")} #{@guide.formulary_review_date.day}, #{@guide.formulary_review_date.year}" %><br><br>
 
-<b>Reimbursement Methodology:</b> <%= "AWP - 10%" %><br><br>
+<b>Reimbursement Methodology:</b> <%= @guide.reimbursement_methodology %><br><br>
 
 
 <b>Phone Number:</b> <%= @guide.phone_number.gsub(" ", ".") %><br><br>
