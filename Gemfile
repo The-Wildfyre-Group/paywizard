@@ -18,3 +18,6 @@ gem 'spring',        group: :development # Spring speeds up development by keepi
 gem 'google-webfonts' # Add google font library
 gem "parsley-rails" # Add parsley form validation
 gem 'dropzonejs-rails' # Add drag and drop file upload
+gem "chartkick"
+gem 'groupdate', '~> 2.1.1'
+gem 'active_median', '~> 0.1.0'

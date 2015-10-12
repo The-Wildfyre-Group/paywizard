@@ -12,13 +12,13 @@ No records found.
 
 <b>Current Link:</b> <%= @guide.current_link %><br><br>
 
-<b>Link Notes:</b> <%= @guide.link_notes %><br><br>
+<!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
 
-<b>Medicaid FFS:</b> <%= @guide.medicaid_ffs %><br><br>
+<!-- <b>Medicaid FFS:</b> <%#= @guide.medicaid_ffs %><br><br> -->
 
-<b>Managed Care Medicaid:</b> <%= @guide.managed_care_medicaid %><br><br>
+<!-- <b>Managed Care Medicaid:</b> <%#= @guide.managed_care_medicaid %><br><br> -->
 
-<b>Managed Care Medicaid:</b> <%= @guide.medical_food_policy %><br><br>
+<!-- <b>Managed Care Medicaid:</b> <%= @guide.medical_food_policy %><br><br> -->
 
 
 <b>Formulary:</b> <%= @guide.formulary? ? "Yes" : "No" %><br><br>
@@ -31,6 +31,10 @@ No records found.
 <b>Phone Number:</b> <%= @guide.phone_number.gsub(" ", ".") %><br><br>
 
 <b>Fax Number:</b> <%= @guide.fax_number.gsub(" ", ".") %>
+
+<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
+
+<%= pie_chart chart_object %>
 
 
 <% end %>
