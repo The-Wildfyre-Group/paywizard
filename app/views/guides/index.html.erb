@@ -12,27 +12,27 @@ No records found.
 
 <b>Current Link:</b> <%= @guide.current_link %><br><br>
 
-<b>Link Notes:</b> <%= @guide.link_notes %><br><br>
+<!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
 
-<b>Medicaid FFS:</b> <%= @guide.medicaid_ffs %><br><br>
+<!-- <b>Medicaid FFS:</b> <%#= @guide.medicaid_ffs %><br><br> -->
 
-<b>Managed Care Medicaid:</b> <%= @guide.managed_care_medicaid %><br><br>
+<!-- <b>Managed Care Medicaid:</b> <%#= @guide.managed_care_medicaid %><br><br> -->
 
-<b>Managed Care Medicaid:</b> <%= @guide.medical_food_policy %><br><br>
+<!-- <b>Managed Care Medicaid:</b> <%= @guide.medical_food_policy %><br><br> -->
 
 
 <b>Formulary:</b> <%= @guide.formulary? ? "Yes" : "No" %><br><br>
 
 <b>Formulary Review Date:</b> <%= "#{@guide.formulary_review_date.strftime("%b")} #{@guide.formulary_review_date.day}, #{@guide.formulary_review_date.year}" %><br><br>
 
-<b>Reimbursement Methodology:</b> <%= @guide.reimbursement_methodology %><br><br>
+<b>Reimbursement Methodology:</b> <%= "AWP - 10%" %><br><br>
 
 
 <b>Phone Number:</b> <%= @guide.phone_number.gsub(" ", ".") %><br><br>
 
 <b>Fax Number:</b> <%= @guide.fax_number.gsub(" ", ".") %>
 
-<% chart_object = {"WIC"=>10, "Medicaid"=>50, "Private Commercial" =>100}  %>
+<% chart_object = {"WIC"=>10, "Medicaid FFS"=>35, "Managed Care Medicaid"=> 15, "Private Commercial" =>100}  %>
 
 <%= pie_chart chart_object %>
 
