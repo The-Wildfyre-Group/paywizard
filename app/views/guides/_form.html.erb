@@ -1,0 +1,28 @@
+<%= form_for @guide do |f| %>
+
+<h2>General </h2>
+State: <%= f.text_field :state %><br>
+Name: <%= f.text_field :name %><br>
+Contact: <%= f.text_field :contact %><br>
+Phone Number: <%= f.text_field :phone_number %><br>
+Fax Number: <%= f.text_field :fax_number %><br>
+Current Link: <%= f.text_field :current_link %><br>
+
+<h2>Medicaid </h2>
+Medicaid FFS:<%= f.text_field :medicaid_ffs %><br>
+Managed Care Medicaid: <%= f.text_field :managed_care_medicaid %><br>
+WIC: <%= f.text_field :wic %><br>
+Private Commercial: <%= f.text_field :private_commercial %><br>
+
+<h2>Formulary</h2>
+Formulary? <%= f.check_box   :formulary %><br>
+Formulary Review Date: <%= f.text_field :formulary_review_date %><br>
+
+
+:payer_name
+
+<% f.submit %>
+
+
+
+<% end %>
