@@ -1,41 +1,111 @@
-
 <% if @guide.nil? %>
 
 No records found.
 
 <% else %>
 
-<h3>Reimbursement Information for <%= @guide.name %> in <%= @guide.state %> for <%= @guide.payer_name %> </h3>
+<div class="uk-grid" data-uk-grid-margin>
+  <div class="uk-width-medium-2-4 uk-container-center">
+    <div class="md-card">
+      <div class="md-card-content">
+        <h5 class="clearfix uk-text-center uk-margin-small-top">
+          	Reimbursement Information
+        </h5>
+        <h2 class="uk-text-center uk-margin-small-top">
+        	<span class="uk-text-primary"><%= @guide.name %></span> in 
+        	<span class="uk-text-primary"><%= @guide.state %></span> for
+        	 <span class="uk-text-primary"><%= @guide.payer_name %></span> 
+        </h3>
+      </div>
+      <hr class="uk-margin-remove"/>
+      <div class="md-card-content uk-margin-remove-top">
+				<div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+	      	<div class="uk-width-large-1-2 uk-width-medium-1-2 ">
+	          <ul class="md-list md-list-addon">
+	          	<li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE85E;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.contact %></h3>
+	                <span class="uk-text-small uk-text-muted">Contact</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                  <i class="md-list-addon-icon material-icons uk-text-primary">&#xE157;</i>
+	              </div>
+	              <div class="md-list-content">
+	                  <h3 class="uk-margin-remove"><%= @guide.current_link %></h3>
+	                  <span class="uk-text-small uk-text-muted">Current Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE02F;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.formulary? ? "Yes" : "No" %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE878;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= "#{@guide.formulary_review_date.strftime("%b")} #{@guide.formulary_review_date.day}, #{@guide.formulary_review_date.year}" %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Review Date</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE24B;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_methodology %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Methodology</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE0B0;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.phone_number.gsub(" ", ".") %></h3>
+	                <span class="uk-text-small uk-text-muted">Phone Number</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.fax_number.gsub(" ", ".") %></h3>
+	                <span class="uk-text-small uk-text-muted">Fax Number</span>
+	              </div>
+	            </li>
+	          </ul>
+	          <!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
 
+						<!-- <b>Medicaid FFS:</b> <%#= @guide.medicaid_ffs %><br><br> -->
 
-<b>Contact:</b> <%= @guide.contact %><br><br>
+						<!-- <b>Managed Care Medicaid:</b> <%#= @guide.managed_care_medicaid %><br><br> -->
 
-<b>Current Link:</b> <%= @guide.current_link %><br><br>
+						<!-- <b>Managed Care Medicaid:</b> <%= @guide.medical_food_policy %><br><br> -->
 
-<!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
+	      	</div>
+					<div class="uk-width-large-1-2 uk-width-medium-1-2 ">
+						<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
 
-<!-- <b>Medicaid FFS:</b> <%#= @guide.medicaid_ffs %><br><br> -->
+						<%= pie_chart chart_object %>
+					</div>
+	      </div>
+	    </div>
+  	</div>
+	</div>
+</div>
 
-<!-- <b>Managed Care Medicaid:</b> <%#= @guide.managed_care_medicaid %><br><br> -->
-
-<!-- <b>Managed Care Medicaid:</b> <%= @guide.medical_food_policy %><br><br> -->
-
-
-<b>Formulary:</b> <%= @guide.formulary? ? "Yes" : "No" %><br><br>
-
-<b>Formulary Review Date:</b> <%= "#{@guide.formulary_review_date.strftime("%b")} #{@guide.formulary_review_date.day}, #{@guide.formulary_review_date.year}" %><br><br>
-
-<b>Reimbursement Methodology:</b> <%= @guide.reimbursement_methodology %><br><br>
-
-
-<b>Phone Number:</b> <%= @guide.phone_number.gsub(" ", ".") %><br><br>
-
-<b>Fax Number:</b> <%= @guide.fax_number.gsub(" ", ".") %>
-
-<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
-
-<%= pie_chart chart_object %>
 
 
 <% end %>
-
