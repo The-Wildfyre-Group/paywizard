@@ -36,7 +36,7 @@ No records found.
 	                  <i class="md-list-addon-icon material-icons uk-text-primary">&#xE157;</i>
 	              </div>
 	              <div class="md-list-content">
-	                  <h3 class="uk-margin-remove"><%= @guide.current_link %></h3>
+	                  <h3 class="uk-margin-remove"><%= link_to "State Information", @guide.current_link %></h3>
 	                  <span class="uk-text-small uk-text-muted">Current Link</span>
 	              </div>
 	            </li>
@@ -98,7 +98,11 @@ No records found.
 					<div class="uk-width-large-1-2 uk-width-medium-1-2 ">
 						<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
 
-						<%= pie_chart chart_object %>
+						<%= pie_chart chart_object, colors: ["#1976D2","#D32F2F", "#FF9800", "#388E3C"], library: {legend: {position: "none"}} %>
+						<font style="color:#1976D2" size="5">&#9679;</font><font style="color:black" size="3">WIC</font>
+						<font style="color:#D32F2F" size="5">&#9679;</font><font style="color:black" size="3">Medicaid FFS</font>
+						<font style="color:#FF9800" size="5">&#9679;</font><font style="color:black" size="3">Managed Care Medicaid</font>
+						<font style="color:#388E3C" size="5">&#9679;</font><font style="color:black" size="3">Private Commercial</font>
 					</div>
 	      </div>
 	    </div>
