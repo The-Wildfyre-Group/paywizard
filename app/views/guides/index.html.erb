@@ -5,7 +5,7 @@ No records found.
 <% else %>
 
 <div class="uk-grid" data-uk-grid-margin>
-  <div class="uk-width-medium-2-3 uk-container-center">
+  <div class="uk-width-medium-8-10 uk-container-center">
     <div class="md-card">
       <div class="md-card-content">
         <h5 class="clearfix uk-text-center uk-margin-small-top">
@@ -105,13 +105,40 @@ No records found.
 
 	      	</div>
 					<div class="uk-width-large-1-2 uk-width-medium-1-2 ">
-						<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
 
-						<%= pie_chart chart_object, colors: ["#1976D2","#D32F2F", "#FF9800", "#388E3C"], library: {legend: {position: "none"}} %>
-						<font style="color:#1976D2" size="5">&#9679;</font><font style="color:black" size="3">WIC</font>
-						<font style="color:#D32F2F" size="5">&#9679;</font><font style="color:black" size="3">Medicaid FFS</font>
-						<font style="color:#FF9800" size="5">&#9679;</font><font style="color:black" size="3">Managed Care Medicaid</font>
-						<font style="color:#388E3C" size="5">&#9679;</font><font style="color:black" size="3">Private Commercial</font>
+						<div class="uk-grid" data-uk-grid-margin>
+							<div class="uk-width-large-1-1">
+								<h2 class="uk-text-center uk-margin-bottom-remove uk-margin-small-top">Payer Segment Breakdown (%)</h2>
+	      				<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
+								<%= pie_chart chart_object, colors: ["#1976D2","#D32F2F", "#FF9800", "#388E3C"], library: {legend: {position: "none"}} %>
+							</div>
+							<div class="uk-width-large-3-4 uk-container-center uk-margin-small-top">
+
+								<div class="uk-grid uk-margin-remove">
+	      					<div class="uk-width-large-1-2">
+			      				<font style="color:#1976D2" size="5">&#9679;</font>
+										<font style="color:black" size="3">WIC</font><br/>
+									</div>
+									<div class="uk-width-large-1-2">
+										<font style="color:#D32F2F" size="5">&#9679;</font>
+										<font style="color:black" size="3">Medicaid FFS</font>
+									</div>
+								</div>
+
+								<div class="uk-grid uk-margin-remove">
+	      					<div class="uk-width-large-1-2">
+	      						<font style="color:#FF9800" size="5">&#9679;</font>
+										<font style="color:black" size="3">Managed Care Medicaid</font>
+									</div>
+									<div class="uk-width-large-1-2">
+										<font style="color:#388E3C" size="5">&#9679;</font>
+										<font style="color:black" size="3">Private Commercial</font>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
 					</div>
 	      </div>
 	    </div>
