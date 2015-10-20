@@ -59,7 +59,7 @@
   current_link: "http://www.dshs.state.tx.us/wichd/",
   
   # reimbursement
-  reimbursement_methodology: "AWP - 10%",
+  reimbursement_methodology: "N/A",
   
   # pie chart
   private_commercial: 51,
@@ -88,7 +88,7 @@
   current_link: "http://www.dshs.state.tx.us/wichd/",
   
   # reimbursement
-  reimbursement_methodology: "AWP - 10%",
+  reimbursement_methodology: "N/A",
   
   # pie chart
   private_commercial: 51,
@@ -117,7 +117,7 @@
   current_link: "http://www.tmhp.com/Pages/default.aspx",
   
   # reimbursement
-  reimbursement_methodology: "AWP - 10%",
+  reimbursement_methodology: "$2.93/unit",
   
   # pie chart
   private_commercial: 51,
@@ -146,7 +146,7 @@
   current_link: "http://www.tmhp.com/Pages/default.aspx",
   
   # reimbursement
-  reimbursement_methodology: "AWP - 10%",
+  reimbursement_methodology: "$2.93/unit",
   
   # pie chart
   private_commercial: 51,
