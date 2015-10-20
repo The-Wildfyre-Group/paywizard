@@ -90,7 +90,11 @@ No records found.
 	                  <i class="md-list-addon-icon material-icons uk-text-primary">&#xE873;</i>
 	              </div>
 	              <div class="md-list-content">
+					  <% if @guide.payer_name == "WIC" %>
 	                  <h3 class="uk-margin-remove"><%= link_to "Texas WIC Medical Request Form", "/TXWICMedicalRequestforFormula.pdf" %></h3>
+					  <% else %>
+					  <h3 class="uk-margin-remove"><%= link_to "Texas Medicaid Benefit Information Form", "http://www.tmhp.com/News_Items/2010/08-06-10%20Benefit%20Criteria%20Nutritional%20%28Enteral%29%20Products%20Supplies%20Equipment%20Change%20for%20Texas%20Medicaid%20HHS.pdf" %></h3>
+					  <% end %>
 	                  <span class="uk-text-small uk-text-muted">Forms</span>
 	              </div>
 	            </li>
@@ -109,7 +113,7 @@ No records found.
 						<div class="uk-grid" data-uk-grid-margin>
 							<div class="uk-width-large-1-1">
 								<h2 class="uk-text-center uk-margin-bottom-remove uk-margin-small-top">Payer Segment Breakdown (%)</h2>
-	      				<% chart_object = {"WIC"=> @guide.wic, "Medicaid FFS"=>@guide.medicaid_ffs, "Managed Care Medicaid"=> @guide.managed_care_medicaid, "Private Commercial" =>@guide.private_commercial}  %>
+	      				<% chart_object = {"Private Commercial" =>@guide.private_commercial, "Medicaid"=>@guide.medicaid, "Uninsured"=> @guide.uninsured, "Medicare/Other Public" =>@guide.medicare_other_public}  %>
 								<%= pie_chart chart_object, colors: ["#1976D2","#D32F2F", "#FF9800", "#388E3C"], library: {legend: {position: "none"}} %>
 							</div>
 							<div class="uk-width-large-3-4 uk-container-center uk-margin-small-top">
@@ -117,22 +121,22 @@ No records found.
 								<div class="uk-grid uk-margin-remove">
 	      					<div class="uk-width-large-1-2">
 			      				<font style="color:#1976D2" size="5">&#9679;</font>
-										<font style="color:black" size="3">WIC</font><br/>
+										<font style="color:black" size="3">Private Commercial</font><br/>
 									</div>
 									<div class="uk-width-large-1-2">
 										<font style="color:#D32F2F" size="5">&#9679;</font>
-										<font style="color:black" size="3">Medicaid FFS</font>
+										<font style="color:black" size="3">Medicaid</font>
 									</div>
 								</div>
 
 								<div class="uk-grid uk-margin-remove">
 	      					<div class="uk-width-large-1-2">
 	      						<font style="color:#FF9800" size="5">&#9679;</font>
-										<font style="color:black" size="3">Managed Care Medicaid</font>
+										<font style="color:black" size="3">Uninsured</font>
 									</div>
 									<div class="uk-width-large-1-2">
 										<font style="color:#388E3C" size="5">&#9679;</font>
-										<font style="color:black" size="3">Private Commercial</font>
+										<font style="color:black" size="3">Medicare/Other Public</font>
 									</div>
 								</div>
 

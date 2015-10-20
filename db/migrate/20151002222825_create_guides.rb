@@ -6,8 +6,11 @@ class CreateGuides < ActiveRecord::Migration
       t.string :contact
       t.integer :medicaid_ffs
       t.integer :managed_care_medicaid
+      t.integer :medicaid
       t.integer :wic
       t.integer :private_commercial
+      t.integer :uninsured
+      t.integer :medicare_other_public
       t.string :medical_food_policy
       t.date   :formulary_review_date
       t.boolean :formulary
