@@ -1,0 +1,60 @@
+<body class="">
+  <!-- main header -->
+  <div id="page_content">
+    <div id="page_content_inner">
+      
+       <%= render 'guides/search' %>
+		 
+        
+        <!-- output table and search results -->
+        <div class="uk-grid" data-uk-grid-margin>
+        <div class="uk-width-3-5 uk-container-center">
+          <div class="md-card">
+            <div class="md-card-content">
+              <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                  <div class="uk-overflow-container">
+                    <table class="uk-table uk-table-hover">
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>Product</th>
+                          <th>Product Name</th>
+                          <th>Payer State</th>
+                          <th>Payer Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% @paginated_guides.each_with_index do |guide, i| %>
+                          <tr>
+                            <td><span class="heading_c"><%= i + 1 %></span></td>
+                            <td>
+                              <img class="md-user-image dense-image dense-loading" src="http://www.wellnesssolutionsinc.com/Enteral%20Supplements/images/enteral_0090_png.jpg" height="30"alt="">
+                            </td>
+                            <td class="uk-text-large uk-text-nowrap">
+                              <span class="heading_c"><a href="<%= "guides/#{guide.slug}" %>"><%= guide.name %></a></span>
+                            </td>
+                            <td class="uk-text-nowrap">
+                              <span class="heading_c"><%= guide.state %></span>
+                            </td>
+                            <td>
+                              <span class="heading_c"><%= guide.payer %></span>
+                            </td>
+                          </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                  </div>
+                  <%= render 'guides/pagination' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <!-- end output table and search results -->
+		
+
+      
+    </div>
+  </div>

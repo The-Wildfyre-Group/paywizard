@@ -4,18 +4,23 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
   def states
-    ["Texas", "New York", "Florida", "Georgia", "Illinois", "Ohio", "North Carolina", "Pennsylvania", "Michigan", "New Jersey"]
+    Guide.pluck(:state)
+  end
+  
+  def all_states
+    ["Alabama", "Alaska", "Arizona","Arkansas" ,"California" ,"Colorado" ,"Connecticut" ,"Delaware" ,"Florida" ,"Georgia" ,"Hawaii" ,"Idaho" ,"Illinois","Indiana" ,"Iowa" ,"Kansas" ,"Kentucky" ,"Louisiana" ,"Maine" ,"Maryland" ,"Massachusetts" ,"Michigan" ,"Minnesota" ,"Mississippi" ,"Missouri" ,"Montana","Nebraska" ,"Nevada" ,"New Hampshire" ,"New Jersey","New Mexico" ,"New York","North Carolina" ,"North Dakota" ,"Ohio" ,"Oklahoma" ,"Oregon" ,"Pennsylvania","Rhode Island" ,"South Carolina" ,"South Dakota" ,"Tennessee" ,"Texas" ,"Utah","Vermont" ,"Virginia" ,"Washington" ,"West Virginia" ,"Wisconsin" ,"Wyoming"]
   end
   
   def payer_names
-    ["WIC", "Medicaid", "BlueCross", "United Health", "Kaiser"]
+    Guide.pluck(:payer)
   end
   
   def products
-    ["Neocate Infant", "Neocate Junior", "Ketocal", "Duocal", "Liquigen"]
+    Guide.pluck(:name)
   end
   
-   helper_method :states, :payer_names, :products
+   helper_method :states, :payer_names, :products, :all_states
   
   
 end
+
