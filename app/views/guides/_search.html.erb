@@ -1,64 +1,69 @@
-      <!-- beginning of form -->
-      <%= form_tag guides_path, method: :get do %>
-        <div class="uk-grid" data-uk-grid-margin>
-        <div class="uk-width-3-5 uk-container-center">
+<!-- beginning of form -->
+<%= form_tag guides_path, method: :get do %>
+  <div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-3-5 uk-container-center">
 
+      <div class="uk-grid" data-uk-grid-margin="">
+        <div class="uk-width-medium-2-10">
+          <img src="http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg" class="uk-thumbnail"/>
+        </div>
+        <div class="uk-width-medium-7-10">
+          <h4 class="text-muted uk-margin-small-top uk-margin-bottom-remove">Nutricia</h4> 
+          <h1 class="uk-text-muted uk-margin-remove">
+            Payor Wizard
+          </h1>
+        </div>
+      </div>
+
+      <hr/>
+     
+      <p class="text-right uk-clearfix">
+        Download:
+        <%= link_to "Excel", guides_path(format: "xls")%>
+        <%= link_to spreadsheets_path, class: "md-btn uk-float-right" do %>
+          Upload Reimbursement Data
+          <i class="material-icons uk-margin-small-left">&#xE89D;</i>
+        <% end %>
+      </p>
+
+      <br/>
+
+      <div class="md-card">
+        <div class="md-card-content">
+          
+          <!-- search field -->
           <div class="uk-grid" data-uk-grid-margin="">
+
+            <!-- payer state -->
             <div class="uk-width-medium-2-10">
-              <img src="http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg" class="uk-thumbnail"/>
+              <%= select_tag :state, options_for_select(states, (params[:state] if params[:state].present?)), {class: "data-md-selectize", prompt: "Select State"} %>
             </div>
-            <div class="uk-width-medium-7-10">
-              <h4 class="text-muted uk-margin-small-top uk-margin-bottom-remove">Nutricia</h4> 
-              <h1 class="uk-text-muted uk-margin-remove">
-                Payor Wizard
-              </h1>
+           <!-- end payer state -->
+
+            <!-- payer Name -->
+            <div class="uk-width-medium-2-10">
+              <%= select_tag :payer, options_for_select(payer_names, (params[:payer] if params[:payer].present?)), {class: "data-md-selectize", prompt: "Select Payer"} %>
             </div>
+            <!-- end payer Name -->
+
+            <!-- Products -->
+            <div class="uk-width-medium-3-10">
+             <%= select_tag :name, options_for_select(products, (params[:name] if params[:name].present?)), {class: "data-md-selectize", prompt: "Select Nutricia Product"} %>
+            </div>
+            <!-- end Products -->
+
+            <!-- Submit Button -->
+            <div class="uk-width-medium-3-10 uk-text-center">
+              <%= submit_tag "Search", class: "md-btn md-btn-block md-btn-primary uk-margin-small-top"%>
+            </div>
+            <!-- Submit Button -->
+
           </div>
-         
-         <p>
-           Download:
-           <%= link_to "Excel", guides_path(format: "xls") %>
-         </p>
-          <br/>
+          <!-- end search field -->
 
-          <div class="md-card">
-            <div class="md-card-content">
-              
-              <!-- search field -->
-              <div class="uk-grid" data-uk-grid-margin="">
-
-                <!-- payer state -->
-                <div class="uk-width-medium-2-10">
-                  <%= select_tag :state, options_for_select(states, (params[:state] if params[:state].present?)), {class: "data-md-selectize", prompt: "Select State"} %>
-                </div>
-               <!-- end payer state -->
-
-
-                <!-- payer Name -->
-                <div class="uk-width-medium-2-10">
-                  <%= select_tag :payer, options_for_select(payer_names, (params[:payer] if params[:payer].present?)), {class: "data-md-selectize", prompt: "Select Payer"} %>
-                </div>
-                <!-- end payer Name -->
-
-                <!-- Products -->
-                <div class="uk-width-medium-3-10">
-                 <%= select_tag :name, options_for_select(products, (params[:name] if params[:name].present?)), {class: "data-md-selectize", prompt: "Select Nutricia Product"} %>
-                </div>
-                <!-- end Products -->
-
-                <!-- Submit Button -->
-                <div class="uk-width-medium-3-10 uk-text-center">
-                  <%= submit_tag "Search", class: "md-btn md-btn-block md-btn-primary uk-margin-small-top"%>
-                </div>
-                <!-- Submit Button -->
-              </div>
-              <!-- end search field -->
-
-			  
-
-            </div>
-          </div>
         </div>
-        </div>
-      <% end %>
-      <!-- end of form -->
+      </div>
+    </div>
+  </div>
+<% end %>
+<!-- end of form -->

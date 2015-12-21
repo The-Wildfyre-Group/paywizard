@@ -18,7 +18,6 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Product</th>
                           <th>Product Name</th>
                           <th>Payer State</th>
                           <th>Payer Name</th>
@@ -28,9 +27,6 @@
                         <% @paginated_guides.each_with_index do |guide, i| %>
                           <tr>
                             <td><span class="heading_c"><%= i + 1 %></span></td>
-                            <td>
-                              <img class="md-user-image dense-image dense-loading" src="http://www.wellnesssolutionsinc.com/Enteral%20Supplements/images/enteral_0090_png.jpg" height="30"alt="">
-                            </td>
                             <td class="uk-text-large uk-text-nowrap">
                               <span class="heading_c"><a href="<%= "guides/#{guide.slug}" %>"><%= guide.name %></a></span>
                             </td>

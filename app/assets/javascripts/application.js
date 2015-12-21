@@ -111,7 +111,18 @@
 // forms notes functions -->
 //= require altair/pages/page_notes.min
 
+// forms_file_upload functions -->
+//= require altair/pages/forms_file_upload.min
 
+
+$(function() {
+// enable hires images
+altair_helpers.retina_images();
+// fastClick (touch devices)
+if(Modernizr.touch) {
+    FastClick.attach(document.body);
+}
+});
    
 
 // google web fonts
