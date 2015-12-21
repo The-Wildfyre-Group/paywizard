@@ -1,18 +1,96 @@
-<div class="" id="upload-error-header" style="display: block">
-</div>
-<ul><% (0..15).to_a.each do |i| %><div id="error-<%= i %>"></div><% end %></ul>
-<div class="" id="upload-success" style="display: block">
-</div>
-      
-      
-      <%= form_tag import_spreadsheets_path, id: "upload-form", multipart: true, :remote => true do %>
-	  
-	  <%= select_tag :state, options_for_select([ "California", "Team", "Club", "League" ], "California"), id: "object-field" %><br>
-         <%= file_field_tag :file, id: "file-field" %>
-   
-	    <%= submit_tag "Import",class: "btn btn-success btn", disabled: false, id: "file-submit" %>
-	  <% end %>
-      <%= link_to "Return to Homepage", root_path %>
-      
-	  
-	  
+<div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-3-5 uk-container-center">
+
+      <div class="uk-grid" data-uk-grid-margin="">
+        <div class="uk-width-medium-2-10">
+          <img src="http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg" class="uk-thumbnail"/>
+        </div>
+        <div class="uk-width-medium-7-10">
+          <h4 class="text-muted uk-margin-small-top uk-margin-bottom-remove">Nutricia</h4> 
+          <h1 class="uk-text-muted uk-margin-remove">
+            Payor Wizard
+          </h1>
+        </div>
+      </div>
+
+      <hr/>
+     
+      <div class="uk-width-medium-4-10 uk-container-center">
+
+      	<p class="uk-text-center uk-clearfix">
+	      	<%= link_to "Return to Homepage", root_path %>
+	    	</p>
+
+	      <div class="md-card uk-padding-remove">
+	      	<div>
+	      		<br/>
+             <!--  <div class="md-card-toolbar-actions">
+                  <i class="md-icon material-icons md-card-fullscreen-activate">&#xE5D0;</i>
+                  <i class="md-icon material-icons">&#xE5D5;</i>
+                  <div class="md-card-dropdown" data-uk-dropdown>
+                      <i class="md-icon material-icons">&#xE5D4;</i>
+                      <div class="uk-dropdown uk-dropdown-flip">
+                          <ul class="uk-nav">
+                              <li><a href="#">Action 1</a></li>
+                              <li><a href="#">Action 2</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div> -->
+              <h3 class="heading_a uk-margin-top uk-text-center">
+                Excel Spreadsheet Upload Form
+                <span class="sub-heading">
+                	Use the form below to upload a new excel spreadsheet.
+                <span>
+              </h3>
+          </div>
+          <hr/>
+	        <div class="md-card-content">
+	          <!-- search field -->
+	          <div class="uk-grid" data-uk-grid-margin="">
+
+
+						  <div class="" id="upload-error-header" style="display: block"></div>
+							<ul>
+								<% (0..15).to_a.each do |i| %>
+									<div id="error-<%= i %>"></div>
+								<% end %>
+							</ul>
+							<div class="" id="upload-success" style="display: block"></div>
+						  
+						  <!-- beginning of form -->
+						  <%= form_tag import_spreadsheets_path, id: "upload-form", multipart: true, :remote => true do %>
+							  
+							  <!-- select state  -->
+							  <div class="uk-width-medium-10-10">
+		            	<p class="uk-text uk-text-primary">1. Select state.</p>
+		            	<%= select_tag :state, options_for_select([ "California", "Team", "Club", "League" ], "California"), {class: "data-md-selectize", prompt: "Select State", id: "object-field"} %>
+		            </div>
+
+		            <br/>
+		            <div class="uk-well">
+		            	<p class="uk-text uk-text-primary">2. Click to upload MS Excel file.</p>
+		            	<%= file_field_tag :file, id: "file-field", type: "file" %>
+		            </div>
+	          </div>
+	        </div>
+	        
+	        <hr class="uk-margin-remove"/>
+	        <div class="md-card-content">
+					  <!-- file submit button -->
+					  <p class="uk-margin-small-top uk-margin-large-left uk-margin-large-right">
+					  	<%= submit_tag "Import Spreadsheet", class: "md-btn md-btn-block md-btn-primary", disabled: false, id: "file-submit" do %>
+					  	<% end %>
+					  </p>
+
+					<% end %>
+					<!-- end of form -->
+
+	        </div>
+	      </div>
+
+	    </div>
+    </div>
+  </div>
+
+
