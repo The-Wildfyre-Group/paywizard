@@ -1,28 +1,80 @@
-<%= form_for @guide do |f| %>
+<%= form_for @guide, html: {"data-parsley-validate" => true, id: 'guide-form'} do |f|   %>
+
+<h2>Product </h2>
+
+Product: <%= f.text_field :name, placeholder: "", "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %><br>
 
 <h2>General </h2>
-State: <%= f.text_field :state %><br>
-Name: <%= f.text_field :name %><br>
+Payer: <%= f.text_field :payer, placeholder: "", "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %><br>
+State: <%= f.select :state, all_states, "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %><br>
+<br>
 Contact: <%= f.text_field :contact %><br>
 Phone Number: <%= f.text_field :phone_number %><br>
 Fax Number: <%= f.text_field :fax_number %><br>
-Current Link: <%= f.text_field :current_link %><br>
 
-<h2>Medicaid </h2>
-Medicaid FFS:<%= f.text_field :medicaid_ffs %><br>
-Managed Care Medicaid: <%= f.text_field :managed_care_medicaid %><br>
-WIC: <%= f.text_field :wic %><br>
-Private Commercial: <%= f.text_field :private_commercial %><br>
+<h2>Coverage </h2>
+Published Policies: <%= f.check_box :published_policies %><br>
+Policy Name: <%= f.text_field :policy_name %><br>
+Policy Number: <%= f.text_field :policy_number %><br>
+Policy Link: <%= f.text_field :policy_link %><br>
+Codes Covered: <%= f.text_field :codes_covered %><br>
+Approved Diagnoses <%= f.text_field :approved_diagnoses %><br>
+Age Limitations <%= f.text_area :age_limitations %><br>
+Other Limitations <%= f.text_area :other_limitations %><br>
+State Mandate Apply? <%= f.check_box :state_mandate_apply %><br>
+Major Medical Benefit? <%= f.check_box :major_medical_benefit %><br>
+RX Benefit? <%= f.check_box :rx_benefit %><br>
+
+<b>PA</b><br>
+PA Required <%= f.check_box :pa_required %><br>
+PA Form Required <%= f.check_box :pa_form_required %><br>
+PA Link <%= f.text_field :pa_link %><br>
+PA Process <%= f.text_area :pa_process %><br>
+
+      
+<b>Coverage Notes</b><br>
+Coverage Notes <%= f.text_area :coverage_notes %> <br>
+
+
+<h2>Coding </h2>
+Accepting Billing Codes <%= f.text_field :accepted_billing_codes%><br>
+BO Modifier <%= f.check_box :bo_modifier %><br>
+S9433 <%= f.check_box :is_s9433 %><br>
+Coding link <%= f.text_field :coding_link %><br>
+
 
 <h2>Formulary</h2>
-Formulary? <%= f.check_box   :formulary %><br>
-Formulary Review Date: <%= f.text_field :formulary_review_date %><br>
+Nutricia Formulary Products <%= f.text_field :nutricia_formulary_products %><br>
+Open of Closed Formulary <%= f.select :open_or_closed_formulary, ["Open", "Closed"] %><br>
+Formulary Exception Allowed <%= f.check_box :formulary_exception_allowed %><br>
+Formulary Form Required <%= f.check_box :formulary_form_required %><br>
+Formulary Link <%= f.text_field :formulary_link %><br>
+Formulary Documentation Required <%= f.check_box :formulary_documentation_required %><br>
+Formulary Process <%= f.text_area :formulary_process %><br>
+
+ <h2>Reimbursement</h2> 
+ Reimbursement Fee Schedule<%= f.check_box :reimbursement_fee_schedule %><br>
+ Reimbursement Link<%= f.text_field :reimbursement_link %><br>
+ Product Reimbursement Rate<%= f.text_field :product_reimbursement_rate %><br>
+ Reimbursement Specific<%= f.text_area :reimbursement_specific %><br>
+ Reimbursement Methodology<%= f.text_area :reimbursement_methodology %><br>
+ Reimbursement Fees<%= f.text_field :reimbursement_fees %><br>
+
+ <h2>Relationship to Other Payers</h2>
+ Relationship to WIC <%= f.text_area :relationship_to_wic %><br>
+ Relationship to State Medicaid <%= f.text_area :relationship_to_state_medicaid %><br>
+ Relationship to Other Programs <%= f.text_area :relationship_to_other_programs %><br>
 
 
-:payer_name
+<%= f.submit %>
 
-<% f.submit %>
+<% unless @guide.new_record? %>
+<br><br>
+<%= link_to "Delete Guide", @guide, method: :delete, data: {confirm: "Are you sure?"}, class: "btn" %>
+<% end %>
 
 
 
 <% end %>
+
+     

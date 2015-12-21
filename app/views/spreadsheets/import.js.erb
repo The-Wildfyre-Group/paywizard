@@ -1,0 +1,12 @@
+<% if @error_messages.present? %>
+    $('#upload-error-header').html("<%= j render 'spreadsheets/error_header', error_messages_count: @error_messages.count, filename: @filename %>")
+    <% (0..@error_messages.count).to_a.each do |i| %>
+    $('#error-<%= i %>').html("<%= j render 'spreadsheets/error', error: @error_messages[i] %>")
+    <% end %>
+<% elsif !@success.nil? %>
+     $('#upload-error-header').hide()
+     <% (0..15).to_a.each do |i| %>
+     $('#error-<%= i %>').hide()
+     <% end %>
+     $('#upload-success').html("<%= j render 'spreadsheets/success', filename: @filename %>")
+<% end %>

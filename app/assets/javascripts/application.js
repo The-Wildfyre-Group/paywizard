@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery_ujs
+//= require jquery.remotipart
 
 	
 // common functions 
@@ -148,3 +151,23 @@ $(function() {
 // 	}
 // });
    
+   
+// $(function () {
+//     var whitelist = ["xls", "xlsx", "csv"];
+//     $('#file-field').on('change.bs.fileinput', function() {
+//       var ext = $('#file-field').val().split('.').pop().toLowerCase();
+//       var extensionisgood = (whitelist.indexOf(ext) > -1);
+//       if (extensionisgood) {
+//           $('#file-submit').removeAttr('disabled');
+//           $('#invalid-message').hide()
+//
+//       } else {
+//           $('#file-submit').attr('disabled', true);
+//           $('#file-field').val("")
+//           $('#invalid-message').css({ display: "block" });
+//       }
+//     });
+// });
+
+
+
