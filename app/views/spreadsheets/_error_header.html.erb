@@ -1,3 +1,6 @@
-<font size="2" color="red">
-    <p>Did not import file <i><%= filename %></i> because the spreadsheet has at least <%=pluralize error_messages_count, "error" %>:</p>
-</font>
+<p class="uk-text-danger uk-text-center">
+	<i class="material-icons uk-text-danger md-48">&#xE8B2;</i> 
+	<br/>
+	<u>
+		Did not import file <i><%= filename %></i> because the spreadsheet has at least <%=pluralize error_messages_count, "error" %>:</u>
+</p>

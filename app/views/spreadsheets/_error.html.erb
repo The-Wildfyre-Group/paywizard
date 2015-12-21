@@ -1,7 +1,6 @@
-<font size="2" color="red">
-    <% if error.present?%>
-    <li><%= error %></li>
-    <% end %>
-</font>
-      
-
+<% if error.present? %>
+	<div class="uk-alert uk-alert-danger" data-uk-alert>
+		<%= error %>
+	</div>
+	<br/>
+<% end %>
