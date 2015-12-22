@@ -12,21 +12,23 @@ module Validation
         sheet = spreadsheet.sheet(sheet_name)
         header = sheet.column(1).collect { |column| column.gsub(" ", "_").downcase unless column.nil?}
         errors << Guide.validate_headers(header, i+1,spreadsheet.sheets.count, sheet_name)
-        #return errors.compact if errors.present?
-        #p "Errors: #{errors.compact.blank?}"
-        #p "Errors: #{errors.compact}"
-        if errors.compact.blank?
+        # p "Errors Blank? #{errors.compact.blank?}"
+   #      p "Errors: #{errors.compact}"
+        # if errors.compact.blank?
           ((sheet.first_column + 1)..sheet.last_column).each do |i|
             model_hash = Hash[[header, sheet.column(i)].transpose].delete_if { |k, v| k.nil? }.except("coverage","published_policies_section", "pa_section", "other_notes_section", "coding", "formulary", "reimbursement", "relationship_to_other_payers" )
-            errors << Guide.validate_products_and_payer_exists(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
+            errors << Guide.validate_products_exists(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
+            errors << Guide.validate_payer_exists(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
             errors << Guide.validate_booleans(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
-              model_hash["products_covered"].try(:split, ", ").try(:each) do |product_name|
-                without_products_hash = model_hash.except("products_covered").merge(state: state, name: product_name)  
-              end
+            # p "Products: #{model_hash["products_covered"]}"
+    #         p "Products Nil? #{model_hash["products_covered"].nil?}"
+            model_hash["products_covered"].try(:split, ", ").try(:each) do |product_name|
+              without_products_hash = model_hash.except("products_covered").merge(state: state, name: product_name)  
+            end
           end
-        end
+        # end
       end
-      errors.compact
+      errors.compact.count <= 20 ? errors.compact : errors = [] << "Invalid Spreadsheet: The spreadsheet has more than 20 errors. Please check the file and try again." 
     end
   
     def validate_headers(header, sheet_number, sheets, sheet_name)
@@ -40,8 +42,8 @@ module Validation
         end
       end
     end
-  
-    def validate_products_and_payer_exists(sheet_number, sheets, hash, sheet_name)
+    
+    def validate_products_exists(sheet_number, sheets, hash, sheet_name)
       if hash["products_covered"].nil?
          "On sheet #{sheet_name}, the 'Products Covered' field is invalid. It is either blank or too few characters to be a Nutricia product. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
       elsif hash["products_covered"].length < 3
@@ -51,7 +53,9 @@ module Validation
           "The 'Products Covered' field is invalid."
         end
       end
-    
+    end
+  
+    def validate_payer_exists(sheet_number, sheets, hash, sheet_name)
       if hash["payer"].nil?
          "On sheet #{sheet_name}, the 'Payer' field is invalid. It is either blank or too few characters to be a verified payer. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
       elsif hash["payer"].length < 2
