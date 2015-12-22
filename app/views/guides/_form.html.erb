@@ -1,77 +1,467 @@
 <%= form_for @guide, html: {"data-parsley-validate" => true, id: 'guide-form'} do |f|   %>
 
-<h2>Product </h2>
+<div class="uk-grid" data-uk-grid-margin>
+  <div class="uk-width-medium-6-10 uk-container-center">
+    <div class="md-card">
+      <div class="md-card-content">
+      	
+      	<%= f.submit class: "md-btn md-btn-primary uk-float-right" do %>
+      		Update Guide
+      	<% end %>
+				<% unless @guide.new_record? %>
+					<%= link_to @guide, method: :delete, data: {confirm: "Are you sure?"}, class: "md-btn md-btn-danger" do %>
+						<i class="material-icons text-white uk-margin-small-right">&#xE872;</i>
+						Delete Guide 
+					<% end %>
+				<% end %>
 
-Product: <%= f.text_field :name, placeholder: "", "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %><br>
-
-<h2>General </h2>
-Payer: <%= f.text_field :payer, placeholder: "", "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %><br>
-State: <%= f.select :state, all_states, "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %><br>
-<br>
-Contact: <%= f.text_field :contact %><br>
-Phone Number: <%= f.text_field :phone_number %><br>
-Fax Number: <%= f.text_field :fax_number %><br>
-
-<h2>Coverage </h2>
-Published Policies: <%= f.check_box :published_policies %><br>
-Policy Name: <%= f.text_field :policy_name %><br>
-Policy Number: <%= f.text_field :policy_number %><br>
-Policy Link: <%= f.text_field :policy_link %><br>
-Codes Covered: <%= f.text_field :codes_covered %><br>
-Approved Diagnoses <%= f.text_field :approved_diagnoses %><br>
-Age Limitations <%= f.text_area :age_limitations %><br>
-Other Limitations <%= f.text_area :other_limitations %><br>
-State Mandate Apply? <%= f.check_box :state_mandate_apply %><br>
-Major Medical Benefit? <%= f.check_box :major_medical_benefit %><br>
-RX Benefit? <%= f.check_box :rx_benefit %><br>
-
-<b>PA</b><br>
-PA Required <%= f.check_box :pa_required %><br>
-PA Form Required <%= f.check_box :pa_form_required %><br>
-PA Link <%= f.text_field :pa_link %><br>
-PA Process <%= f.text_area :pa_process %><br>
 
       
-<b>Coverage Notes</b><br>
-Coverage Notes <%= f.text_area :coverage_notes %> <br>
+        <h3 class="clearfix uk-text-center uk-margin-small-top">
+          	Reimbursement Guide Information
+        </h3>
+        <h2 class="uk-text-center uk-margin-small-top">
+        	<span class="uk-text-primary"><%= @guide.name %></span> in 
+        	<span class="uk-text-primary"><%= @guide.state %></span> for
+        	<span class="uk-text-primary"><%= @guide.payer %></span> 
+        </h2>
+      </div>
+      <hr class="uk-margin-remove"/>
+      <div class="md-card-content uk-margin-remove-top">
+				<div class="uk-grid uk-grid-divider" data-uk-grid-margin>
+	      	<div class="uk-width-large-1-2 uk-width-medium-1-2">
+          	
 
 
-<h2>Coding </h2>
-Accepting Billing Codes <%= f.text_field :accepted_billing_codes%><br>
-BO Modifier <%= f.check_box :bo_modifier %><br>
-S9433 <%= f.check_box :is_s9433 %><br>
-Coding link <%= f.text_field :coding_link %><br>
+
+          	<ul class="md-list md-list-addon">
+              
+              <h3 class="uk-margin-large-left">General</h3>
+              <li>
+              	<div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :name, placeholder: "", "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %></h3>
+					      	<span class="uk-text-small uk-text-muted">Product</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :payer, placeholder: "", "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %></h3>
+	                <span class="uk-text-small uk-text-muted">Payer</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.select :state, all_states, "data-parsley-required" => "true", "data-parsley-length" => "[2, 25]" %></h3>
+	                <span class="uk-text-small uk-text-muted">State</span>
+	              </div>
+	            </li>
+
+	            <h3 class="uk-margin-large-left">Contact Information</h3>
+              <li>
+              	<div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :contact%></h3>
+					      	<span class="uk-text-small uk-text-muted">Contact</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :phone_number %></h3>
+	                <span class="uk-text-small uk-text-muted">Phone Number</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :fax_number %></h3>
+	                <span class="uk-text-small uk-text-muted">Fax Number</span>
+	              </div>
+	            </li>
 
 
-<h2>Formulary</h2>
-Nutricia Formulary Products <%= f.text_field :nutricia_formulary_products %><br>
-Open of Closed Formulary <%= f.select :open_or_closed_formulary, ["Open", "Closed"] %><br>
-Formulary Exception Allowed <%= f.check_box :formulary_exception_allowed %><br>
-Formulary Form Required <%= f.check_box :formulary_form_required %><br>
-Formulary Link <%= f.text_field :formulary_link %><br>
-Formulary Documentation Required <%= f.check_box :formulary_documentation_required %><br>
-Formulary Process <%= f.text_area :formulary_process %><br>
 
- <h2>Reimbursement</h2> 
- Reimbursement Fee Schedule<%= f.check_box :reimbursement_fee_schedule %><br>
- Reimbursement Link<%= f.text_field :reimbursement_link %><br>
- Product Reimbursement Rate<%= f.text_field :product_reimbursement_rate %><br>
- Reimbursement Specific<%= f.text_area :reimbursement_specific %><br>
- Reimbursement Methodology<%= f.text_area :reimbursement_methodology %><br>
- Reimbursement Fees<%= f.text_field :reimbursement_fees %><br>
+	            <h3 class="uk-margin-large-left">Coverage Information</h3>
+	            <ul class="md-list md-list-addon">
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :published_policies %></h3>
+	                <span class="uk-text-small uk-text-muted">Published Policies</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :policy_name %></h3>
+	                <span class="uk-text-small uk-text-muted">Policy Name</span>
+	              </div>
+	            </li>
+	             <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :policy_number %></h3>
+	                <span class="uk-text-small uk-text-muted">Policy Number</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :policy_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Policy Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :codes_covered %></h3>
+	                <span class="uk-text-small uk-text-muted">Codes Covered</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :approved_diagnoses %></h3>
+	                <span class="uk-text-small uk-text-muted">Approved Diagnoses</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :age_limitations %></h3>
+	                <span class="uk-text-small uk-text-muted">Age Limitations</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :other_limitations %></h3>
+	                <span class="uk-text-small uk-text-muted">Other Limitations</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :state_mandate_apply %></h3>
+	                <span class="uk-text-small uk-text-muted">State Mandate Apply</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :major_medical_benefit %></h3>
+	                <span class="uk-text-small uk-text-muted">Major Medical Benefit</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :rx_benefit %></h3>
+	                <span class="uk-text-small uk-text-muted">RX Benefit</span>
+	              </div>
+	            </li>
 
- <h2>Relationship to Other Payers</h2>
- Relationship to WIC <%= f.text_area :relationship_to_wic %><br>
- Relationship to State Medicaid <%= f.text_area :relationship_to_state_medicaid %><br>
- Relationship to Other Programs <%= f.text_area :relationship_to_other_programs %><br>
 
 
-<%= f.submit %>
 
-<% unless @guide.new_record? %>
-<br><br>
-<%= link_to "Delete Guide", @guide, method: :delete, data: {confirm: "Are you sure?"}, class: "btn" %>
-<% end %>
+	            <h3 class="uk-margin-large-left">Coverage Information</h3>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :pa_required %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Required</span>
+	              </div>
+	            </li>
+	             <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :pa_form_required %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Form Required</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :pa_link %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Link</span>
+	              </div>
+	            </li> 
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :pa_process %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Process</span>
+	              </div>
+	            </li>
+
+
+
+
+	            <h3 class="uk-margin-large-left">Coverage Information</h3>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :coverage_notes %></h3>
+	                <span class="uk-text-small uk-text-muted">Coverage Notes</span>
+	              </div>
+	            </li>
+	          </ul>
+	          
+          	<!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
+
+						<!-- <b>Medicaid FFS:</b> <%#= @guide.medicaid_ffs %><br><br> -->
+
+						<!-- <b>Managed Care Medicaid:</b> <%#= @guide.managed_care_medicaid %><br><br> -->
+
+						<!-- <b>Managed Care Medicaid:</b> <%#= @guide.medical_food_policy %><br><br> -->
+
+	      	</div>
+					<div class="uk-width-large-1-2 uk-width-medium-1-2">
+						
+						<h3 class="uk-margin-large-left">Coding</h3>
+						<ul class="md-list md-list-addon">
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :accepted_billing_codes%></h3>
+	                <span class="uk-text-small uk-text-muted">Accepted billing codes</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :bo_modifier %></h3>
+	                <span class="uk-text-small uk-text-muted">BO modifier</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :is_s9433 %></h3>
+	                <span class="uk-text-small uk-text-muted">Is S9433</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :coding_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Coding Link</span>
+	              </div>
+	            </li>
+
+
+
+	            <h3 class="uk-margin-large-left">Formulary</h3>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :nutricia_formulary_products %></h3>
+	                <span class="uk-text-small uk-text-muted">Nutricia Formulary Products</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.select :open_or_closed_formulary, ["Open", "Closed"] %></h3>
+	                <span class="uk-text-small uk-text-muted">Open or closed formulary</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :formulary_exception_allowed %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary exception allowed</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :formulary_form_required %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Form Required</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :formulary_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :formulary_documentation_required %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Documentation Required</span>
+	              </div>
+	            </li>
+
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :formulary_process %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Process</span>
+	              </div>
+	            </li>
+
+
+
+	            <h3 class="uk-margin-large-left">Reimbursement</h3>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.check_box :reimbursement_fee_schedule %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Fee Schedule</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :reimbursement_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :product_reimbursement_rate %></h3>
+	                <span class="uk-text-small uk-text-muted">Product Reimbursement Rate</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :reimbursement_methodology %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Methodology</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_field :reimbursement_fees %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Fees</span>
+	              </div>
+	            </li>
+
+
+
+	            <h3 class="uk-margin-large-left">Relationship to Other Payers</h3>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :relationship_to_wic %></h3>
+	                <span class="uk-text-small uk-text-muted">Relationship to WIC</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :relationship_to_state_medicaid %></h3>
+	                <span class="uk-text-small uk-text-muted">Relationship to State Medicaid</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :relationship_to_other_programs %></h3>
+	                <span class="uk-text-small uk-text-muted">Relationship to Other Programs</span>
+	              </div>
+	            </li>
+	          </ul>
+					</div>
+	      </div>
+	    </div>
+  	</div>
+	</div>
+</div>
+
+
+
+
 
 
 
