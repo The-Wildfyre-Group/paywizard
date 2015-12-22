@@ -20,11 +20,13 @@
         <h3 class="clearfix uk-text-center uk-margin-small-top">
           	Reimbursement Guide Information
         </h3>
+        <% unless @guide.new_record? %>
         <h2 class="uk-text-center uk-margin-small-top">
         	<span class="uk-text-primary"><%= @guide.name %></span> in 
         	<span class="uk-text-primary"><%= @guide.state %></span> for
         	<span class="uk-text-primary"><%= @guide.payer %></span> 
         </h2>
+        <% end %>
       </div>
       <hr class="uk-margin-remove"/>
       <div class="md-card-content uk-margin-remove-top">
