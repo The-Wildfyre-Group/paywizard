@@ -1,7 +1,8 @@
-<font size="2" color="green">
-    Successfully imported file <%= filename %>. <b>
-    <p>
-    	<%= link_to "Return to Guide", guides_path %>
-    </p>
-</font>
-      
+<div class="uk-alert uk-alert-success" data-uk-alert>
+    Successfully imported file <%= filename %>.
+</div>
+<p>
+	<i class="material-icons">&#xE314;</i> <%= link_to "View Available Guides", guides_path %>
+</p>
+<hr>
+  
