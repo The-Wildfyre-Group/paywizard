@@ -1,11 +1,14 @@
 <div class="uk-grid" data-uk-grid-margin>
     <div class="uk-container uk-width-large-8-10 uk-width-small-10-10 uk-container-center">
+ 
 
       <div class="uk-grid" data-uk-grid-margin="">
         <div class="uk-width-medium-2-10">
-          <img src="http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg" class="uk-thumbnail"/>
+          <%= link_to root_path do %>
+            <%= image_tag("http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg", class: "uk-thumbnail", style: "min-width: 200px; min-height: 85px;")%>
+          <% end %>
         </div>
-        <div class="uk-width-medium-7-10">
+        <div class="uk-width-medium-8-10">
           <h4 class="text-muted uk-margin-small-top uk-margin-bottom-remove">Nutricia</h4> 
           <h1 class="uk-text-muted uk-margin-remove">
             Payor Wizard
