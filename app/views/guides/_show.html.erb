@@ -22,6 +22,8 @@
 				<div class="uk-grid uk-grid-divider" data-uk-grid-margin>
 	      	<div class="uk-width-large-1-2 uk-width-medium-1-2">
           	<ul class="md-list md-list-addon">
+              
+              <h3 class="uk-margin-large-left uk-text-primary">Contact Information</h3>
               <li>
               	<div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -49,6 +51,9 @@
 	                <span class="uk-text-small uk-text-muted">Fax Number</span>
 	              </div>
 	            </li>
+
+
+	            <h3 class="uk-margin-large-left uk-text-primary">Coverage Information</h3>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -64,6 +69,15 @@
 	              </div>
 	              <div class="md-list-content">
 	                <h3 class="uk-margin-remove"><%= @guide.policy_name %></h3>
+	                <span class="uk-text-small uk-text-muted">Policy Name</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.policy_number %></h3>
 	                <span class="uk-text-small uk-text-muted">Policy Name</span>
 	              </div>
 	            </li>
@@ -112,6 +126,25 @@
 	                <span class="uk-text-small uk-text-muted">Other Limitations</span>
 	              </div>
 	            </li>
+
+	            <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.age_limitations %></h3>
+	                <span class="uk-text-small uk-text-muted">Age Limitations</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.state_mandate_apply? ? "Yes" : (@guide.state_mandate_apply == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Other Limitations</span>
+	              </div>
+	            </li>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -139,13 +172,26 @@
 	                <span class="uk-text-small uk-text-muted">RX Benefit</span>
 	              </div>
 	            </li>
+
+
+
+	            <h3 class="uk-margin-large-left uk-text-primary">PA</h3>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
 	              </div>
 	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= @guide.pa_form_required? ? "Yes" : (@guide.pa_form_required == false ? "No" : "")  %></h3>
+	                <h3 class="uk-margin-remove"><%= @guide.pa_required? ? "Yes" : (@guide.pa_required == false ? "No" : "")  %></h3>
 	                <span class="uk-text-small uk-text-muted">PA Required</span>
+	              </div>
+	            </li>
+	             <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.pa_form_required? ? "Yes" : (@guide.pa_form_required == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Form Required</span>
 	              </div>
 	            </li>
 	            <li>
@@ -166,6 +212,9 @@
 	                <span class="uk-text-small uk-text-muted">PA Process</span>
 	              </div>
 	            </li>
+
+
+	            <h3 class="uk-margin-large-left uk-text-primary">Coverage Notes</h3>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -175,15 +224,9 @@
 	                <span class="uk-text-small uk-text-muted">Coverage Notes</span>
 	              </div>
 	            </li>
-	            <li>
-	              <div class="md-list-addon-element">
-	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
-	              </div>
-	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= @guide.accepted_billing_codes %></h3>
-	                <span class="uk-text-small uk-text-muted">Accepted billing codes</span>
-	              </div>
-	            </li>
+
+
+	           
 	          </ul>
 	          
           	<!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
@@ -197,6 +240,17 @@
 	      	</div>
 					<div class="uk-width-large-1-2 uk-width-medium-1-2">
 						<ul class="md-list md-list-addon">
+
+	            <h3 class="uk-margin-large-left uk-text-primary">Coding</h3>
+	             <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.accepted_billing_codes %></h3>
+	                <span class="uk-text-small uk-text-muted">Accepted billing codes</span>
+	              </div>
+	            </li>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -224,6 +278,10 @@
 	                <span class="uk-text-small uk-text-muted">Coding Link</span>
 	              </div>
 	            </li>
+
+
+
+	            <h3 class="uk-margin-large-left uk-text-primary">Formulary</h3>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -288,6 +346,9 @@
 	                <span class="uk-text-small uk-text-muted">Formulary Process</span>
 	              </div>
 	            </li>
+
+
+	            <h3 class="uk-margin-large-left uk-text-primary">Reimbursement</h3>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -333,6 +394,11 @@
 	                <span class="uk-text-small uk-text-muted">Reimbursement Fees</span>
 	              </div>
 	            </li>
+
+
+
+
+	            <h3 class="uk-margin-large-left uk-text-primary">Relationship to Other Payers</h3>
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -358,15 +424,6 @@
 	              <div class="md-list-content">
 	                <h3 class="uk-margin-remove"><%= @guide.relationship_to_other_programs %></h3>
 	                <span class="uk-text-small uk-text-muted">Relationship to Other Programs</span>
-	              </div>
-	            </li>
-	            <li>
-	              <div class="md-list-addon-element">
-	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE24B;</i> -->
-	              </div>
-	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_methodology %></h3>
-	                <span class="uk-text-small uk-text-muted">Reimbursement Methodology</span>
 	              </div>
 	            </li>
 	          </ul>
