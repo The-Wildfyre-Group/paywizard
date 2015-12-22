@@ -43,25 +43,7 @@ class Guide < ActiveRecord::Base
   end
   
   def self.import(file, state)
-    spreadsheet = open_spreadsheet(file)
-    spreadsheet.sheets.each_with_index do |sheet_name, i|
-      sheet = spreadsheet.sheet(sheet_name)
-      header = sheet.column(1).collect { |column| column.gsub(" ", "_").downcase unless column.nil?}
-      ((sheet.first_column + 1)..sheet.last_column).each do |i|
-        model_hash = Hash[[header, sheet.column(i)].transpose].delete_if { |k, v| k.nil? }.except("coverage","published_policies_section", "pa_section", "other_notes_section", "coding", "formulary", "reimbursement", "relationship_to_other_payers" )
-        model_hash["products_covered"].split(", ").each do |product_name|
-          without_products_hash = model_hash.except("products_covered").merge(state: state, name: product_name)
-          object = Guide.where(state: state, name: product_name, payer: model_hash["payer"])
-          if object.present? 
-             object.first.update_attributes(without_products_hash)
-             guide = object.first
-          else
-             guide = Guide.create!(without_products_hash.merge(id: Guide.last.try(:id).to_i + 1))
-          end
-           guide.update_booleans(model_hash)
-        end
-      end
-    end
+    
   end
   
   def update_booleans(hash={})

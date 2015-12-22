@@ -6,29 +6,6 @@ module Validation
     # class methods
     
     def validate_document(file, state)
-      errors = []
-      spreadsheet = open_spreadsheet(file)
-      spreadsheet.sheets.each_with_index do |sheet_name, i|
-        sheet = spreadsheet.sheet(sheet_name)
-        header = sheet.column(1).collect { |column| column.gsub(" ", "_").downcase unless column.nil?}
-        errors << Guide.validate_headers(header, i+1,spreadsheet.sheets.count, sheet_name)
-        # p "Errors Blank? #{errors.compact.blank?}"
-   #      p "Errors: #{errors.compact}"
-        # if errors.compact.blank?
-          ((sheet.first_column + 1)..sheet.last_column).each do |i|
-            model_hash = Hash[[header, sheet.column(i)].transpose].delete_if { |k, v| k.nil? }.except("coverage","published_policies_section", "pa_section", "other_notes_section", "coding", "formulary", "reimbursement", "relationship_to_other_payers" )
-            errors << Guide.validate_products_exists(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
-            errors << Guide.validate_payer_exists(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
-            errors << Guide.validate_booleans(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
-            # p "Products: #{model_hash["products_covered"]}"
-    #         p "Products Nil? #{model_hash["products_covered"].nil?}"
-            model_hash["products_covered"].try(:split, ", ").try(:each) do |product_name|
-              without_products_hash = model_hash.except("products_covered").merge(state: state, name: product_name)  
-            end
-          end
-        # end
-      end
-      errors.compact.count <= 20 ? errors.compact : errors = [] << "Invalid Spreadsheet: The spreadsheet has more than 20 errors. Please check the file and try again." 
     end
   
     def validate_headers(header, sheet_number, sheets, sheet_name)
