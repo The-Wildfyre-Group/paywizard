@@ -1,69 +1,40 @@
 <div class="uk-grid" data-uk-grid-margin>
-  <div class="uk-width-medium-8-10 uk-container-center">
+  <div class="uk-width-medium-6-10 uk-container-center">
     <div class="md-card">
       <div class="md-card-content">
-        <h5 class="clearfix uk-text-center uk-margin-small-top">
-          	Reimbursement Information
-        </h5>
+      	
+      	<%= link_to edit_guide_path(@guide), class: "md-btn md-btn-primary uk-float-right" do %>
+      		<i class="material-icons text-white uk-margin-small-right">&#xE869;</i>
+      		Edit Guide
+      	<% end %>
+      
+        <h3 class="clearfix uk-text-center uk-margin-small-top">
+          	Reimbursement Guide Information
+        </h3>
         <h2 class="uk-text-center uk-margin-small-top">
         	<span class="uk-text-primary"><%= @guide.name %></span> in 
         	<span class="uk-text-primary"><%= @guide.state %></span> for
         	 <span class="uk-text-primary"><%= @guide.payer %></span> 
         </h3>
+
       </div>
       <hr class="uk-margin-remove"/>
       <div class="md-card-content uk-margin-remove-top">
 				<div class="uk-grid uk-grid-divider" data-uk-grid-margin>
-	      	<div class="uk-width-large-1-2 uk-width-medium-1-2 ">
-	          <ul class="md-list md-list-addon">
-	          	<li>
-	              <div class="md-list-addon-element">
-	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE85E;</i>
+	      	<div class="uk-width-large-1-2 uk-width-medium-1-2">
+          	<ul class="md-list md-list-addon">
+              <li>
+              	<div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
 	              </div>
 	              <div class="md-list-content">
 	                <h3 class="uk-margin-remove"><%= @guide.contact %></h3>
-	                <span class="uk-text-small uk-text-muted">Contact</span>
+					      	<span class="uk-text-small uk-text-muted">Contact</span>
 	              </div>
 	            </li>
 	            <li>
 	              <div class="md-list-addon-element">
-	                  <i class="md-list-addon-icon material-icons uk-text-primary">&#xE157;</i>
-	              </div>
-	              <div class="md-list-content">
-	                  <h3 class="uk-margin-remove"><%#= link_to @guide.current_link, @guide.current_link %></h3>
-	                  <span class="uk-text-small uk-text-muted">Insurance Website</span>
-	              </div>
-	            </li>
-	            <li>
-	              <div class="md-list-addon-element">
-	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE02F;</i>
-	              </div>
-	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%#= @guide.formulary? ? "Yes" : "No" %></h3>
-	                <span class="uk-text-small uk-text-muted">Formulary?</span>
-	              </div>
-	            </li>
-	            <li>
-	              <div class="md-list-addon-element">
-	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE878;</i>
-	              </div>
-	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%#= "#{@guide.formulary_review_date.strftime("%b")} #{@guide.formulary_review_date.day}, #{@guide.formulary_review_date.year}" %></h3>
-	                <span class="uk-text-small uk-text-muted">Formulary Review Date</span>
-	              </div>
-	            </li>
-	            <li>
-	              <div class="md-list-addon-element">
-	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE24B;</i>
-	              </div>
-	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_methodology %></h3>
-	                <span class="uk-text-small uk-text-muted">Reimbursement Methodology</span>
-	              </div>
-	            </li>
-	            <li>
-	              <div class="md-list-addon-element">
-	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE0B0;</i>
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
 	              </div>
 	              <div class="md-list-content">
 	                <h3 class="uk-margin-remove"><%= @guide.phone_number.gsub(" ", ".") %></h3>
@@ -81,25 +52,142 @@
 	            </li>
 	            <li>
 	              <div class="md-list-addon-element">
-	                  <i class="md-list-addon-icon material-icons uk-text-primary">&#xE873;</i>
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
 	              </div>
 	              <div class="md-list-content">
-                      <% if false %>
-					  <% if @guide.payer_name == "WIC" %>
-	                  <h3 class="uk-margin-remove"><%= link_to "Texas WIC Medical Request Form", "/TXWICMedicalRequestforFormula.pdf" %></h3>
-					  <% else %>
-					  
-					  <h3 class="uk-margin-remove"><%= link_to "Texas Medicaid - Medical Policy", "http://www.tmhp.com/News_Items/2010/08-06-10%20Benefit%20Criteria%20Nutritional%20%28Enteral%29%20Products%20Supplies%20Equipment%20Change%20for%20Texas%20Medicaid%20HHS.pdf" %></h3>
-					  
-					  <h3 class="uk-margin-remove"><%= link_to "Texas Standard Prior Authorization Form", "http://www.tdi.texas.gov/forms/lhlifehealth/nofr001.pdf"  %></h3>
-					  
-					  <% end %>
-                      <% end %>
-	                  <span class="uk-text-small uk-text-muted">Forms</span>
+	                <h3 class="uk-margin-remove"><%= @guide.published_policies? ? "Yes" : (guide.published_policies == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Published Policies</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.policy_name %></h3>
+	                <span class="uk-text-small uk-text-muted">Policy Name</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.policy_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Policy Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.codes_covered %></h3>
+	                <span class="uk-text-small uk-text-muted">Codes Covered</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.approved_diagnoses %></h3>
+	                <span class="uk-text-small uk-text-muted">Approved Diagnoses</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.age_limitations %></h3>
+	                <span class="uk-text-small uk-text-muted">Age Limitations</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.state_mandate_apply? ? "Yes" : (@guide.state_mandate_apply == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Other Limitations</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.major_medical_benefit? ? "Yes" : (@guide.major_medical_benefit == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">State Mandate Apply</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.rx_benefit? ? "Yes" : (@guide.rx_benefit == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Major Medical Benefit</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.pa_required? ? "Yes" : (@guide.pa_required == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">RX Benefit</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.pa_form_required? ? "Yes" : (@guide.pa_form_required == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Required</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.pa_link %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Link</span>
+	              </div>
+	            </li> 
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.pa_process %></h3>
+	                <span class="uk-text-small uk-text-muted">PA Process</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.coverage_notes %></h3>
+	                <span class="uk-text-small uk-text-muted">Coverage Notes</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.accepted_billing_codes %></h3>
+	                <span class="uk-text-small uk-text-muted">Accepted billing codes</span>
 	              </div>
 	            </li>
 	          </ul>
-	          <!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
+	          
+          	<!-- <b>Link Notes:</b> <%#= @guide.link_notes %><br><br> -->
 
 						<!-- <b>Medicaid FFS:</b> <%#= @guide.medicaid_ffs %><br><br> -->
 
@@ -108,46 +196,185 @@
 						<!-- <b>Managed Care Medicaid:</b> <%#= @guide.medical_food_policy %><br><br> -->
 
 	      	</div>
-					<div class="uk-width-large-1-2 uk-width-medium-1-2 ">
+					<div class="uk-width-large-1-2 uk-width-medium-1-2">
+						<ul class="md-list md-list-addon">
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.bo_modifier? ? "Yes" : (@guide.bo_modifier == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">BO modifier</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.is_s9433? ? "Yes" : (@guide.is_s9433 == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Is S9433</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.coding_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Coding Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.nutricia_formulary_products %></h3>
+	                <span class="uk-text-small uk-text-muted">Nutricia Formulary Products</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.open_or_closed_formulary %></h3>
+	                <span class="uk-text-small uk-text-muted">Open or closed formulary</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.formulary_exception_allowed? ? "Yes" : (@guide.formulary_exception_allowed == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary exception allowed</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.formulary_form_required? ? "Yes" : (@guide.formulary_form_required == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Form Required</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.formulary_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.formulary_documentation_required? ? "Yes" : (@guide.formulary_documentation_required == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Documentation Required</span>
+	              </div>
+	            </li>
 
-						<div class="uk-grid" data-uk-grid-margin>
-							<div class="uk-width-large-1-1">
-								<h2 class="uk-text-center uk-margin-bottom-remove uk-margin-small-top">Payer Segment Breakdown (%)</h2>
-	      				<%# chart_object = {"Private Commercial" =>@guide.private_commercial, "Medicaid"=>@guide.medicaid, "Uninsured"=> @guide.uninsured, "Medicare/Other Public" =>@guide.medicare_other_public}  %>
-								<%#= pie_chart chart_object, colors: ["#1976D2","#D32F2F", "#FF9800", "#388E3C"], library: {legend: {position: "none"}} %>
-							</div>
-							<div class="uk-width-large-3-4 uk-container-center uk-margin-small-top">
-
-								<div class="uk-grid uk-margin-remove">
-	      					<div class="uk-width-large-1-2">
-			      				<font style="color:#1976D2" size="5">&#9679;</font>
-										<font style="color:black" size="3">Private Commercial</font><br/>
-									</div>
-									<div class="uk-width-large-1-2">
-										<font style="color:#D32F2F" size="5">&#9679;</font>
-										<font style="color:black" size="3">Medicaid</font>
-									</div>
-								</div>
-
-								<div class="uk-grid uk-margin-remove">
-	      					<div class="uk-width-large-1-2">
-	      						<font style="color:#FF9800" size="5">&#9679;</font>
-										<font style="color:black" size="3">Uninsured</font>
-									</div>
-									<div class="uk-width-large-1-2">
-										<font style="color:#388E3C" size="5">&#9679;</font>
-										<font style="color:black" size="3">Medicare/Other Public</font>
-									</div>
-								</div>
-
-							</div>
-						</div>
-      
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.formulary_process %></h3>
+	                <span class="uk-text-small uk-text-muted">Formulary Process</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_fee_schedule? ? "Yes" : (@guide.reimbursement_fee_schedule == false ? "No" : "")  %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Fee Schedule</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_link %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Link</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.product_reimbursement_rate %></h3>
+	                <span class="uk-text-small uk-text-muted">Product Reimbursement Rate</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove">[add code]</h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Methodology</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_fees %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Fees</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.relationship_to_wic  %></h3>
+	                <span class="uk-text-small uk-text-muted">Relationship to WIC</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.relationship_to_state_medicaid %></h3>
+	                <span class="uk-text-small uk-text-muted">Relationship to State Medicaid</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.relationship_to_other_programs %></h3>
+	                <span class="uk-text-small uk-text-muted">Relationship to Other Programs</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <i class="md-list-addon-icon material-icons uk-text-primary">&#xE24B;</i>
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_methodology %></h3>
+	                <span class="uk-text-small uk-text-muted">Reimbursement Methodology</span>
+	              </div>
+	            </li>
+	          </ul>
 					</div>
 	      </div>
-          <%= link_to "Edit Guide", edit_guide_path(@guide), class: "pull-right" %>
 	    </div>
-        
   	</div>
 	</div>
 </div>
+
