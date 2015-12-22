@@ -24,4 +24,10 @@ gem 'active_median', '~> 0.1.0'
 gem 'roo', '~> 2.1.0'
 gem 'remotipart', '~> 1.2'
 
+group :test do
+  gem 'minitest-reporters', '1.0.5'
+  gem 'mini_backtrace',     '0.1.3'
+  gem 'guard-minitest',     '2.3.1'
+end
+
 
