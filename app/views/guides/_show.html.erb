@@ -4,10 +4,12 @@
       <div class="md-card-content">
           <%= link_to root_path do %> 
           Home
-          <% end %> |
+          <% end %> 
+
+          <span class="uk-text-muted uk-margin-small-right uk-margin-small-left"> | </span>
           
           <%= link_to guides_path do %>
-          <i class="material-icons">&#xE8EE;</i>
+          View All Guides
           <% end %>
       	
       	<%= link_to edit_guide_path(@guide), class: "md-btn md-btn-primary uk-float-right" do %>
