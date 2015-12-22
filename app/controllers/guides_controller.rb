@@ -32,7 +32,11 @@ class GuidesController < ApplicationController
   
   def create
     @guide = Guide.new(guide_params.merge(id: Guide.last.try(:id).to_i + 1))
-    @guide.save ? redirect_to @guide : render 'new'
+    if @guide.save
+      redirect_to @guide
+    else
+      render 'new'
+    end
   end
     
   def show;end
@@ -41,7 +45,11 @@ class GuidesController < ApplicationController
   
   def update
     @guide = Guide.friendly.find(params[:id])
-    @guide.update_attributes(guide_params) ? redirect_to @guide : render 'edit'
+    if @guide.update_attributes(guide_params)
+      redirect_to @guide 
+    else
+      render 'edit'
+    end
   end
   
   def destroy
