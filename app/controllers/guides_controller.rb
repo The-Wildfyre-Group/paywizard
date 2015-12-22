@@ -1,4 +1,5 @@
 class GuidesController < ApplicationController
+  before_action :is_admin, except: %w|index show|
   before_action :find_object, only: %w|show edit|
   
   

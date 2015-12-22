@@ -26,10 +26,13 @@
           <span class="md-btn uk-float-left uk-margin-top uk-margin-right">Download Excel</span>
         <% end %>
         
-
-        <%= link_to spreadsheets_path, class: "md-btn uk-float-left uk-margin-top" do %>
-          Upload Reimbursement Data
-          <i class="material-icons uk-margin-small-left">&#xE89D;</i>
+        <% if current_user %>
+          <% if current_user.admin? %>
+            <%= link_to spreadsheets_path, class: "md-btn uk-float-left uk-margin-top" do %>
+              Upload Reimbursement Data
+              <i class="material-icons uk-margin-small-left">&#xE89D;</i>
+            <% end %>
+        <% end %>
         <% end %>
 
       </div>

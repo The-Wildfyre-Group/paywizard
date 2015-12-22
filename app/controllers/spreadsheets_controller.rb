@@ -1,4 +1,5 @@
 class SpreadsheetsController < ApplicationController
+  before_action :is_admin
   
   def import
     state, file = params[:state], params[:file] 

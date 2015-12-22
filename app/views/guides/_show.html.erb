@@ -3,11 +3,14 @@
     <div class="md-card">
       <div class="md-card-content">
       	<div class="uk-clearfix" data-uk-grid-margin>
-
-      		<%= link_to edit_guide_path(@guide), class: "md-btn md-btn-primary uk-float-right" do %>
-      		<i class="material-icons text-white uk-margin-small-right">&#xE869;</i>
-      		Edit Guide
-      	<% end %>
+            <% if current_user %>
+              <% if current_user.admin? %>
+          		<%= link_to edit_guide_path(@guide), class: "md-btn md-btn-primary uk-float-right" do %>
+          		<i class="material-icons text-white uk-margin-small-right">&#xE869;</i>
+          		Edit Guide
+          	    <% end %>
+                <% end %>
+            <% end %>
 
           <%= link_to root_path do %> 
           	Home

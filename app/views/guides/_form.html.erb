@@ -8,12 +8,16 @@
       	<%= f.submit class: "md-btn md-btn-primary uk-float-right" do %>
       		Update Guide
       	<% end %>
+        <% if current_user %>
+          <% if current_user.admin? %>
 				<% unless @guide.new_record? %>
 					<%= link_to @guide, method: :delete, data: {confirm: 'Are you sure?'}, class: "md-btn md-btn-danger" do %>
 						<i class="material-icons text-white uk-margin-small-right">&#xE872;</i>
 						Delete Guide 
 					<% end %>
 				<% end %>
+            <% end %>
+         <% end %>
 
 
       

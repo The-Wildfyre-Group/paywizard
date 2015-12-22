@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :correct_user
+  before_filter :is_admin
   before_filter :find_object
   
   def new

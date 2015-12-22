@@ -23,6 +23,18 @@ class ApplicationController < ActionController::Base
     Guide.pluck(:name)
   end
   
+  def is_admin
+    if current_user
+      if current_user.admin?
+        true
+      else
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
+  end
+  
    helper_method :current_user, :states, :payer_names, :products, :all_states
   
   
