@@ -1,13 +1,13 @@
 <!-- beginning of form -->
 <%= form_tag guides_path, method: :get do %>
   <div class="uk-grid" data-uk-grid-margin>
-    <div class="uk-width-3-5 uk-container-center">
+    <div class="uk-width-large-3-5 uk-width-small-10-10 uk-container-center">
 
       <div class="uk-grid" data-uk-grid-margin="">
         <div class="uk-width-medium-2-10">
           <img src="http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg" class="uk-thumbnail"/>
         </div>
-        <div class="uk-width-medium-7-10">
+        <div class="uk-width-medium-8-10">
           <h4 class="text-muted uk-margin-small-top uk-margin-bottom-remove">Nutricia</h4> 
           <h1 class="uk-text-muted uk-margin-remove">
             Payor Wizard
@@ -17,14 +17,18 @@
 
       <hr/>
      
-      <p class="text-right uk-clearfix">
-        Download:
-        <%= link_to "Excel", guides_path(format: "xls")%>
-        <%= link_to spreadsheets_path, class: "md-btn uk-float-right" do %>
+      <div class="text-right uk-clearfix">
+
+        <%= link_to guides_path(format: "xls") do %>
+          <a class="md-btn uk-float-left uk-margin-top">Download Excel</a>
+        <% end %>
+
+        <%= link_to spreadsheets_path, class: "md-btn uk-float-left uk-margin-top" do %>
           Upload Reimbursement Data
           <i class="material-icons uk-margin-small-left">&#xE89D;</i>
         <% end %>
-      </p>
+
+      </div>
 
       <br/>
 
