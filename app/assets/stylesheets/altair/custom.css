@@ -79,3 +79,12 @@ input.vertical-spacing {
 .uk-text-danger {
     color: #ee7b79 !important;
 }
+
+.uk-pagination>li.uk-active>span {
+    background: #08c;
+    color: #fff;
+}
+
+.uk-pagination>li.uk-active>span a {
+    color: #fff;
+}
