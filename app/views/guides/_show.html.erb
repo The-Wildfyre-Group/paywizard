@@ -2,20 +2,24 @@
   <div class="uk-width-medium-6-10 uk-container-center">
     <div class="md-card">
       <div class="md-card-content">
-          <%= link_to root_path do %> 
-          Home
-          <% end %> 
+      	<div class="uk-clearfix" data-uk-grid-margin>
 
-          <span class="uk-text-muted uk-margin-small-right uk-margin-small-left"> | </span>
-          
-          <%= link_to guides_path do %>
-          View All Guides
-          <% end %>
-      	
-      	<%= link_to edit_guide_path(@guide), class: "md-btn md-btn-primary uk-float-right" do %>
+      		<%= link_to edit_guide_path(@guide), class: "md-btn md-btn-primary uk-float-right" do %>
       		<i class="material-icons text-white uk-margin-small-right">&#xE869;</i>
       		Edit Guide
       	<% end %>
+
+          <%= link_to root_path do %> 
+          	Home
+          <% end %> 
+          <span class="uk-text-muted uk-margin-small-right uk-margin-small-left"> | </span>
+          <%= link_to guides_path do %>
+          	View All Guides
+          <% end %>
+      	
+      	
+      </div>
+
       
         <h3 class="clearfix uk-text-center uk-margin-small-top">
           	Reimbursement Guide Information
