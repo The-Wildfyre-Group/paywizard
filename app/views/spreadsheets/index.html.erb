@@ -62,7 +62,7 @@
 						  
 						  <!-- select state  -->
 					  	<p class="uk-text uk-text-primary">1. Select state.</p>
-            	<%= select_tag :state, options_for_select([ "California", "Team", "Club", "League" ], "California"), {class: "data-md-selectize", prompt: "Select State", id: "object-field"} %>
+            	<%= select_tag :state, options_for_select(all_states, "California"), {class: "data-md-selectize", prompt: "Select State", id: "object-field"} %>
 	            <br/>
 	            <div class="uk-well">
 	            	<p class="uk-text uk-text-primary">2. Click to upload MS Excel file.</p>
