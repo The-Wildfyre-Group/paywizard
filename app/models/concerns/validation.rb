@@ -20,12 +20,9 @@ module Validation
             model_hash = Hash[[header, sheet.column(i)].transpose].delete_if { |k, v| k.nil? }.except("coverage","published_policies_section", "pa_section", "other_notes_section", "coding", "formulary", "reimbursement", "relationship_to_other_payers" )
             errors << Guide.validate_products_and_payer_exists(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
             errors << Guide.validate_booleans(i+1, spreadsheet.sheets.count, model_hash, sheet_name)
-         #   p "Errors: #{errors.compact}"
-            if errors.blank?
-              model_hash["products_covered"].split(", ").each do |product_name|
+              model_hash["products_covered"].try(:split, ", ").try(:each) do |product_name|
                 without_products_hash = model_hash.except("products_covered").merge(state: state, name: product_name)  
               end
-            end
           end
         end
       end
