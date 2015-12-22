@@ -1,0 +1,77 @@
+<div class="uk-grid" data-uk-grid-margin>
+    <div class="uk-width-large-8-10 uk-width-small-10-10 uk-container-center">
+
+      <div class="uk-grid" data-uk-grid-margin="">
+        <div class="uk-width-medium-2-10">
+          <img src="http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg" class="uk-thumbnail"/>
+        </div>
+        <div class="uk-width-medium-7-10">
+          <h4 class="text-muted uk-margin-small-top uk-margin-bottom-remove">Nutricia</h4> 
+          <h1 class="uk-text-muted uk-margin-remove">
+            Payor Wizard
+          </h1>
+        </div>
+      </div>
+
+      <hr/>
+     
+      <div class="uk-width-medium-4-10 uk-container-center">
+
+      	<p class="uk-text-center uk-clearfix">
+	      	<%= link_to "Return to Homepage", root_path %>
+	    	</p>
+
+	      <div class="md-card uk-padding-remove">
+	      	<div>
+	      		<br/>
+             <!--  <div class="md-card-toolbar-actions">
+                  <i class="md-icon material-icons md-card-fullscreen-activate">&#xE5D0;</i>
+                  <i class="md-icon material-icons">&#xE5D5;</i>
+                  <div class="md-card-dropdown" data-uk-dropdown>
+                      <i class="md-icon material-icons">&#xE5D4;</i>
+                      <div class="uk-dropdown uk-dropdown-flip">
+                          <ul class="uk-nav">
+                              <li><a href="#">Action 1</a></li>
+                              <li><a href="#">Action 2</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div> -->
+              <h3 class="heading_a uk-margin-top uk-text-center">
+               Administrative Login
+                <span class="sub-heading">
+                	Enter your credentials below.
+                <span>
+              </h3>
+          </div>
+          <hr/>
+	        <div class="md-card-content uk-padding-top-remove">
+	          <!-- search field -->
+            <!-- beginning of form -->
+					  <%= form_tag sessions_path, id: "login-form", class: "uk-width-medium-8-10 uk-container-center" do %>
+					  	
+            	<%= text_field_tag :email,"",  {class: "data-md", id: "email", placeholder: "Enter Email Address"} %>
+	            <br/>
+	            <div class="uk-well">
+	            <%= password_field_tag :password,"",  {class: "data-md", id: "password", placeholder: "Enter Password"} %>
+	          	</div>
+		        </div>
+		        
+		        <hr class="uk-margin-remove"/>
+		        <div class="md-card-content">
+						  <!-- file submit button -->
+						  <p class="uk-margin-small-top uk-margin-large-left uk-margin-large-right">
+						  	<%= submit_tag "Login", class: "md-btn md-btn-block md-btn-primary" %>
+						  </p>
+
+						<% end %>
+					<!-- end of form -->
+
+	        </div>
+	      </div>
+
+	    </div>
+    </div>
+  </div>
+
+
