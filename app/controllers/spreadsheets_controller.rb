@@ -1,12 +1,12 @@
 class SpreadsheetsController < ApplicationController
   
   def import
-    state = params[:state]
-    @error_messages = Guide.validate_document(params[:file], state)
-    @filename = params[:file].original_filename
+    state, file = params[:state], params[:file] 
+    @error_messages = Guide.validate_document(file, state)
+    @filename = file.original_filename
     if @error_messages.blank?
       @success = true
-      Guide.import(params[:file], state)
+      Guide.import(file, state)
     end
     respond_to do |format|
       format.js

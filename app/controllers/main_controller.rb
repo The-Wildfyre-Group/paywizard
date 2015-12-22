@@ -1,5 +1,3 @@
 class MainController < ApplicationController
-  def index
-    @guides = Guide.all
-  end
+  def index;end
 end
