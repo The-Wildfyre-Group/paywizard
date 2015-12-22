@@ -9,7 +9,7 @@
       		Update Guide
       	<% end %>
 				<% unless @guide.new_record? %>
-					<%= link_to @guide, method: :delete, data: {confirm: "Are you sure?"}, class: "md-btn md-btn-danger" do %>
+					<%= link_to @guide, method: :delete, data: {confirm: 'Are you sure?'}, class: "md-btn md-btn-danger" do %>
 						<i class="material-icons text-white uk-margin-small-right">&#xE872;</i>
 						Delete Guide 
 					<% end %>
