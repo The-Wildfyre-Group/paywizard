@@ -1,41 +1,55 @@
-                  <% if @guides.count > @per_page %>
-                  <ul class="uk-pagination uk-margin-medium-top uk-margin-medium-bottom">
-                     
-                    <li class="<%= @page == 1 ? "uk-disabled" : "" %>"><%= link_to params.merge(:page => 1) do %> <span><i class="uk-icon-angle-double-left"></i></span><% end %></li>
-                    
-                    <% if (@page > 3)  %>
-                    
-                    <li class=""><span><%= link_to 1, params.merge(:page => 1) %></span></li>
-                    
-                    <% end %>
-                    <% if ((@page - 1) > 2) && (@page != 4) %>
-                    <li><span>&hellip;</span></li>
-                    <% end %>
-                    
-                    
-                    
-                    <% (([1, (@page == 5 ? 4 : (@page == @page_count ? (@page_count - 3) : @page - 2))].max)..@page_count).take(5).to_a.each do |i| %>
-                    <li class="<%= (@page == i || (@page.zero? && i == 1)) ? "uk-active" : "" %>">
-                        <span>
-                        <% if (i >= (@page - 2)) || ((@page_count - i) <= 4) %>
-                        <%= link_to i, params.merge(:page => i) %>
-                        <% end %>
-                       
-                        </span></li>
-                    <% end %>
-                    
-                    
-                    <% if (@page_count - @page) > 3 %>
-                    <li><span>&hellip;</span></li>
-                    <li class="<%= @page == @page_count ? "uk-active" : "" %>"><span><%= link_to @page_count, params.merge(:page => @page_count) %></span></li>
-                    
-                    <% end %>
-                     
-                    <li class="<%= @page == @page_count ? "uk-disabled" : "" %>"><%= link_to params.merge(:page => @page_count) do %><i class="uk-icon-angle-double-right"></i><% end %></li>
-                    
-                  </ul>
-                  <% end %>
-                  
-               
-                  
-               
+<% if @guides.count > @per_page %>
+<ul class="uk-pagination uk-margin-medium-top uk-margin-medium-bottom">
+   
+  <li class="<%= @page == 1 ? "uk-disabled" : "" %>">
+    <%= link_to params.merge(:page => 1) do %> 
+      <span>
+        <i class="material-icons uk-bold md-24">&#xE314;</i>
+      </span>
+    <% end %>
+  </li>
+  
+  <% if (@page > 3)  %>
+  
+  <li class=""><span><%= link_to 1, params.merge(:page => 1) %></span></li>
+  
+  <% end %>
+  <% if ((@page - 1) > 2) && (@page != 4) %>
+  <li><span>&hellip;</span></li>
+  <% end %>
+  
+  
+  
+  <% (([1, (@page == 5 ? 4 : (@page == @page_count ? (@page_count - 3) : @page - 2))].max)..@page_count).take(5).to_a.each do |i| %>
+    <li class="<%= (@page == i || (@page.zero? && i == 1)) ? "uk-active" : "" %>">
+      <span>
+      <% if (i >= (@page - 2)) || ((@page_count - i) <= 4) %>
+      <%= link_to i, params.merge(:page => i) %>
+      <% end %>
+     
+      </span>
+    </li>
+  <% end %>
+  
+  
+  <% if (@page_count - @page) > 3 %>
+  <li><span>&hellip;</span></li>
+  <li class="<%= @page == @page_count ? "uk-active" : "" %>">
+    <span>
+      <%= link_to @page_count, params.merge(:page => @page_count) %>
+    </span>
+  </li>
+  
+  <% end %>
+   
+  <li class="<%= @page == @page_count ? "uk-disabled" : "" %>">
+    <%= link_to params.merge(:page => @page_count) do %>
+    <i class="material-icons uk-bold md-24">&#xE315;</i>
+    <% end %>
+  </li>
+  
+</ul>
+<% end %>
+
+
+
