@@ -13,8 +13,9 @@
                     <% end %>
                     
                     
+                    
                     <% (([1, (@page == 5 ? 4 : (@page == @page_count ? (@page_count - 3) : @page - 2))].max)..@page_count).take(5).to_a.each do |i| %>
-                    <li class="<%= @page == i ? "uk-active" : "" %>">
+                    <li class="<%= (@page == i || (@page.zero? && i == 1)) ? "uk-active" : "" %>">
                         <span>
                         <% if (i >= (@page - 2)) || ((@page_count - i) <= 4) %>
                         <%= link_to i, params.merge(:page => i) %>
@@ -34,5 +35,7 @@
                     
                   </ul>
                   <% end %>
+                  
+               
                   
                
