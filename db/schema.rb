@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002222825) do
+ActiveRecord::Schema.define(version: 20151222191144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,5 +68,25 @@ ActiveRecord::Schema.define(version: 20151002222825) do
   add_index "guides", ["payer"], name: "index_guides_on_payer", using: :btree
   add_index "guides", ["slug"], name: "index_guides_on_slug", using: :btree
   add_index "guides", ["state"], name: "index_guides_on_state", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "password_digest",        default: "", null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string   "authentication_token"
+    t.string   "slug"
+    t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
 end

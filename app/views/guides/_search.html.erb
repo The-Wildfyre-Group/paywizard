@@ -1,21 +1,7 @@
-<!-- beginning of form -->
-<%= form_tag guides_path, method: :get do %>
+
   <div class="uk-grid" data-uk-grid-margin>
     <div class="uk-container uk-width-large-8-10 uk-width-small-10-10 uk-container-center">
-
-      <div class="uk-grid" data-uk-grid-margin="">
-        <div class="uk-width-medium-2-10">
-          <%= link_to root_path do %>
-            <%= image_tag("http://images.usa-4u.de/Bilder/Shop_Fotos/Nutricia/header/Nutricia_logo.jpg", class: "uk-thumbnail", style: "min-width: 200px; min-height: 85px;")%>
-          <% end %>
-        </div>
-        <div class="uk-width-medium-8-10">
-          <h4 class="text-muted uk-margin-small-top uk-margin-bottom-remove">Nutricia</h4> 
-          <h1 class="uk-text-muted uk-margin-remove">
-            Payor Wizard
-          </h1>
-        </div>
-      </div>
+      <%= render 'shared/header'%>
 
       <hr/>
      
@@ -25,15 +11,20 @@
           <span class="md-btn uk-float-left uk-margin-top uk-margin-right">Download Excel</span>
         <% end %>
         
-
-        <%= link_to spreadsheets_path, class: "md-btn uk-float-left uk-margin-top" do %>
-          Upload Reimbursement Data
-          <i class="material-icons uk-margin-small-left">&#xE89D;</i>
+        <% if current_user %>
+          <% if current_user.admin? %>
+            <%= link_to spreadsheets_path, class: "md-btn uk-float-left uk-margin-top" do %>
+              Upload Reimbursement Data
+              <i class="material-icons uk-margin-small-left">&#xE89D;</i>
+            <% end %>
+        <% end %>
         <% end %>
 
       </div>
 
       <br/>
+      <!-- beginning of form -->
+      <%= form_tag guides_path, method: :get do %>
 
       <div class="md-card">
         <div class="md-card-content">

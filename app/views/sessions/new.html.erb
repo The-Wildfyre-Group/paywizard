@@ -1,13 +1,12 @@
 <div class="uk-grid" data-uk-grid-margin>
-  <div class="uk-container uk-width-large-8-10 uk-width-small-10-10 uk-container-center">
-    <%= render 'shared/header'%>
+    <div class="uk-width-large-8-10 uk-width-small-10-10 uk-container-center">
+
+      
+
       <hr/>
      
       <div class="uk-width-medium-4-10 uk-container-center">
 
-      	<p class="uk-text-center uk-clearfix">
-	      	<%= link_to "Return to Homepage", root_path %>
-	    	</p>
 
 	      <div class="md-card uk-padding-remove">
 	      	<div>
@@ -26,9 +25,9 @@
                   </div>
               </div> -->
               <h3 class="heading_a uk-margin-top uk-text-center">
-                Excel Spreadsheet Upload Form
+               Administrative Login
                 <span class="sub-heading">
-                	Use the form below to upload a new excel spreadsheet.
+                	Enter your credentials below.
                 <span>
               </h3>
           </div>
@@ -36,25 +35,12 @@
 	        <div class="md-card-content uk-padding-top-remove">
 	          <!-- search field -->
             <!-- beginning of form -->
-					  <%= form_tag import_spreadsheets_path, id: "upload-form", multipart: true, :remote => true , class: "uk-width-medium-8-10 uk-container-center" do %>
-
-							<div class="" id="upload-error-header"></div>
-
-							<!-- add if statement -->
-				  		<% (0..15).to_a.each do |i| %>
-								<div id="error-<%= i %>"></div>
-							<% end %>
-							<div class="" id="upload-success"></div>
-				  
-					 
-						  
-						  <!-- select state  -->
-					  	<p class="uk-text uk-text-primary">1. Select state.</p>
-            	<%= select_tag :state, options_for_select(all_states, "California"), {class: "data-md-selectize", prompt: "Select State", id: "object-field"} %>
+					  <%= form_tag sessions_path, id: "login-form", class: "uk-width-medium-8-10 uk-container-center" do %>
+					  	
+            	<%= text_field_tag :email,"",  {class: "md-input", id: "email", placeholder: "Enter Email Address"} %>
 	            <br/>
 	            <div class="uk-well">
-	            	<p class="uk-text uk-text-primary">2. Click to upload MS Excel file.</p>
-	            	<%= file_field_tag :file, id: "file-field", type: "file" %>
+	            <%= password_field_tag :password,"",  {class: "md-input", id: "password", placeholder: "Enter Password"} %>
 	          	</div>
 		        </div>
 		        
@@ -62,7 +48,7 @@
 		        <div class="md-card-content">
 						  <!-- file submit button -->
 						  <p class="uk-margin-small-top uk-margin-large-left uk-margin-large-right">
-						  	<%= submit_tag "Import Spreadsheet", class: "md-btn md-btn-block md-btn-primary", disabled: false, id: "file-submit"%>
+						  	<%= submit_tag "Login", class: "md-btn md-btn-block md-btn-primary" %>
 						  </p>
 
 						<% end %>

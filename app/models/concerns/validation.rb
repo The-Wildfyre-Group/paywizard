@@ -8,8 +8,9 @@ module Validation
     def validate_document(file, state)
       errors = []
       spreadsheet = open_spreadsheet(file)
-      spreadsheet.sheets.each_with_index do |sheet_name, i|
+      spreadsheet.sheets.each_with_index do |sheet_name, i| 
         sheet = spreadsheet.sheet(sheet_name)
+        next if sheet.last_row.nil?
         header = sheet.column(1).collect { |column| column.gsub(" ", "_").downcase unless column.nil?}
         errors << Guide.validate_headers(header, i+1,spreadsheet.sheets.count, sheet_name)
         # p "Errors Blank? #{errors.compact.blank?}"
@@ -32,11 +33,13 @@ module Validation
     end
   
     def validate_headers(header, sheet_number, sheets, sheet_name)
-      correct_header = ["payer", "contact", "phone_number", "fax_number", nil, "coverage", "published_policies_section", "published_policies", "policy_name", "policy_number", "policy_link", "products_covered", "codes_covered", "approved_diagnoses", "age_limitations", "other_limitations", "state_mandate_apply", "major_medical_benefit", "rx_benefit", nil, "pa_section", "pa_required", "pa_form_required", "pa_link", "pa_process", nil, "other_notes_section", "coverage_notes", nil, "coding", "accepted_billing_codes", "bo_modifier", "is_s9433", "coding_link", nil, "formulary", "nutricia_formulary_products", "open_or_closed_formulary", "formulary_exception_allowed", "formulary_form_required", "formulary_link", "formulary_documentation_required", "formulary_process", nil, "reimbursement", "reimbursement_fee_schedule", "reimbursement_link", "product_reimbursement_rate", "reimbursement_methodology", "reimbursement_fees", nil, "relationship_to_other_payers", "relationship_to_wic", "relationship_to_state_medicaid", "relationship_to_other_programs"]
+      correct_header = ["payer", "contact", "phone_number", "fax_number", nil, "coverage", "published_policies_section", "published_policies", "policy_name", "policy_number", "policy_link", "products_covered", "product_codes_covered", "approved_diagnoses", "approved_diagnoses_codes", "age_limitations", "other_limitations", "state_mandate_apply", "major_medical_benefit", "rx_benefit", nil, "pa_section", "pa_required", "pa_form_required", "pa_link", "pa_process", nil, "other_notes_section", "coverage_notes", nil, "coding", "accepted_billing_codes", "bo_modifier", "is_s9433", "coding_link", nil, "formulary", "nutricia_formulary_products", "open_or_closed_formulary", "formulary_exception_allowed", "formulary_form_required", "formulary_link", "formulary_documentation_required", "formulary_process", nil, "reimbursement", "reimbursement_fee_schedule", "reimbursement_link", "product_reimbursement_rate", "reimbursement_methodology", "reimbursement_fees", "other_notes", nil, "relationship_to_other_payers", "relationship_to_wic", "relationship_to_state_medicaid", "relationship_to_other_programs"]
       correct = header.compact.sort == correct_header.compact.sort
+      p header.compact.sort
+      p correct_header.compact.sort
       if correct == false
         if sheets > 1
-          "On sheet #{sheet_name} (sheet #{sheet_number}), column A in your spreadsheet does not match the requirements of the template. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
+          "On sheet #{sheet_name} (sheet #{sheet_number}), column A in your spreadsheet does not match the requirements of the template. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix and re-upload."
         else
           "Column A in your spreadsheet does not match the requirements of the template."
         end
@@ -45,10 +48,10 @@ module Validation
     
     def validate_products_exists(sheet_number, sheets, hash, sheet_name)
       if hash["products_covered"].nil?
-         "On sheet #{sheet_name}, the 'Products Covered' field is invalid. It is either blank or too few characters to be a Nutricia product. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
+         "On sheet #{sheet_name}, the 'Products Covered' field is invalid. It is either blank or too few characters to be a Nutricia product. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix and re-upload."
       elsif hash["products_covered"].length < 3
         if sheets > 1
-          "On sheet #{sheet_name}, the 'Products Covered' field is invalid. It is either blank or too few characters to be a Nutricia product. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
+          "On sheet #{sheet_name}, the 'Products Covered' field is invalid. It is either blank or too few characters to be a Nutricia product. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix and re-upload."
         else
           "The 'Products Covered' field is invalid."
         end
@@ -57,10 +60,10 @@ module Validation
   
     def validate_payer_exists(sheet_number, sheets, hash, sheet_name)
       if hash["payer"].nil?
-         "On sheet #{sheet_name}, the 'Payer' field is invalid. It is either blank or too few characters to be a verified payer. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
+         "On sheet #{sheet_name}, the 'Payer' field is invalid. It is either blank or too few characters to be a verified payer. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix and re-upload."
       elsif hash["payer"].length < 2
         if sheets > 1
-          "On sheet #{sheet_name}, the 'Payer' field is invalid. It is either blank or too few characters to be a verified payer. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
+          "On sheet #{sheet_name}, the 'Payer' field is invalid. It is either blank or too few characters to be a verified payer. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix and re-upload."
         else
           "The 'Payer' field is invalid."
         end
@@ -74,9 +77,9 @@ module Validation
       end
       unless array.compact.count.zero? 
         if sheets > 1
-          "On sheet #{sheet_name}, the fields #{array.compact.join(", ")} are invalid. These fields accept 'Yes', 'No', or blank values. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix an re-upload."
+          "On sheet #{sheet_name}, the fields #{array.compact.join(", ")} are invalid. These fields accept 'Yes', 'No', or blank values. This spreadsheet has #{sheets} sheet(s). The error may exist on multiple sheets. Please fix and re-upload."
         else
-          "The fields #{array.compact.join(", ")} are invalid. These fields accept 'Yes', 'No' or blank values. Please fix an re-upload."
+          "The fields #{array.compact.join(", ")} are invalid. These fields accept 'Yes', 'No' or blank values. Please fix and re-upload."
         end
       end
     end 

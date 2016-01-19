@@ -46,6 +46,7 @@ class Guide < ActiveRecord::Base
     spreadsheet = open_spreadsheet(file)
     spreadsheet.sheets.each_with_index do |sheet_name, i|
       sheet = spreadsheet.sheet(sheet_name)
+      next if sheet.last_row.nil?
       header = sheet.column(1).collect { |column| column.gsub(" ", "_").downcase unless column.nil?}
       ((sheet.first_column + 1)..sheet.last_column).each do |i|
         model_hash = Hash[[header, sheet.column(i)].transpose].delete_if { |k, v| k.nil? }.except("coverage","published_policies_section", "pa_section", "other_notes_section", "coding", "formulary", "reimbursement", "relationship_to_other_payers" )

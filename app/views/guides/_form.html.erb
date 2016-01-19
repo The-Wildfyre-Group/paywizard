@@ -8,12 +8,16 @@
       	<%= f.submit class: "md-btn md-btn-primary uk-float-right" do %>
       		Update Guide
       	<% end %>
+        <% if current_user %>
+          <% if current_user.admin? %>
 				<% unless @guide.new_record? %>
 					<%= link_to @guide, method: :delete, data: {confirm: 'Are you sure?'}, class: "md-btn md-btn-danger" do %>
 						<i class="material-icons text-white uk-margin-small-right">&#xE872;</i>
 						Delete Guide 
 					<% end %>
 				<% end %>
+            <% end %>
+         <% end %>
 
 
       
@@ -141,7 +145,7 @@
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
 	              </div>
 	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= f.text_field :codes_covered %></h3>
+	                <h3 class="uk-margin-remove"><%= f.text_field :product_codes_covered %></h3>
 	                <span class="uk-text-small uk-text-muted">Codes Covered</span>
 	              </div>
 	            </li>
@@ -152,6 +156,15 @@
 	              <div class="md-list-content">
 	                <h3 class="uk-margin-remove"><%= f.text_field :approved_diagnoses %></h3>
 	                <span class="uk-text-small uk-text-muted">Approved Diagnoses</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :approved_diagnoses_codes %></h3>
+	                <span class="uk-text-small uk-text-muted">Approved Diagnoses Codes</span>
 	              </div>
 	            </li>
 	            <li>
@@ -407,6 +420,15 @@
 	              <div class="md-list-content">
 	                <h3 class="uk-margin-remove"><%= f.text_field :reimbursement_fees %></h3>
 	                <span class="uk-text-small uk-text-muted">Reimbursement Fees</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= f.text_area :other_notes %></h3>
+	                <span class="uk-text-small uk-text-muted">Other Notes</span>
 	              </div>
 	            </li>
 
