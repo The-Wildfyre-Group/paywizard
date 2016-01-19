@@ -16,8 +16,9 @@ class CreateGuides < ActiveRecord::Migration
       t.string  :policy_name
       t.string  :policy_number
       t.string  :policy_link
-      t.text    :codes_covered
+      t.text    :product_codes_covered
       t.text    :approved_diagnoses
+      t.text    :approved_diagnoses_codes
       t.text    :age_limitations
       t.text    :other_limitations
       t.boolean :state_mandate_apply
@@ -53,8 +54,9 @@ class CreateGuides < ActiveRecord::Migration
       t.string  :reimbursement_link
       t.string  :product_reimbursement_rate
       t.text    :reimbursement_specific
-      t.text   :reimbursement_methodology
+      t.text    :reimbursement_methodology
       t.string  :reimbursement_fees
+      t.string  :other_notes
       
     
     # relationship to other payers
