@@ -54,7 +54,7 @@
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
 	              </div>
 	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= @guide.phone_number.gsub(" ", ".") %></h3>
+	                <h3 class="uk-margin-remove"><%= @guide.phone_number.try(:gsub, " ", "-") %></h3>
 	                <span class="uk-text-small uk-text-muted">Phone Number</span>
 	              </div>
 	            </li>
@@ -63,7 +63,7 @@
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
 	              </div>
 	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= @guide.fax_number.gsub(" ", ".") %></h3>
+	                <h3 class="uk-margin-remove"><%= @guide.fax_number.try(:gsub, " ", "-") %></h3>
 	                <span class="uk-text-small uk-text-muted">Fax Number</span>
 	              </div>
 	            </li>
@@ -111,8 +111,8 @@
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
 	              </div>
 	              <div class="md-list-content">
-	                <h3 class="uk-margin-remove"><%= @guide.codes_covered %></h3>
-	                <span class="uk-text-small uk-text-muted">Codes Covered</span>
+	                <h3 class="uk-margin-remove"><%= @guide.product_codes_covered %></h3>
+	                <span class="uk-text-small uk-text-muted">Product Codes Covered</span>
 	              </div>
 	            </li>
 	            <li>
@@ -124,6 +124,16 @@
 	                <span class="uk-text-small uk-text-muted">Approved Diagnoses</span>
 	              </div>
 	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.approved_diagnoses_codes %></h3>
+	                <span class="uk-text-small uk-text-muted">Approved Diagnoses Codes</span>
+	              </div>
+	            </li>
+                
 	            <li>
 	              <div class="md-list-addon-element">
 	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
@@ -408,6 +418,15 @@
 	              <div class="md-list-content">
 	                <h3 class="uk-margin-remove"><%= @guide.reimbursement_fees %></h3>
 	                <span class="uk-text-small uk-text-muted">Reimbursement Fees</span>
+	              </div>
+	            </li>
+	            <li>
+	              <div class="md-list-addon-element">
+	                <!-- <i class="md-list-addon-icon material-icons uk-text-primary">&#xE8C5;</i> -->
+	              </div>
+	              <div class="md-list-content">
+	                <h3 class="uk-margin-remove"><%= @guide.other_notes %></h3>
+	                <span class="uk-text-small uk-text-muted">Other Notes</span>
 	              </div>
 	            </li>
 
