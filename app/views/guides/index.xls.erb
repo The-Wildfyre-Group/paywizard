@@ -14,8 +14,9 @@
           <th>Published Policies</th>
           <th>Policy Name</th>
           <th>Policy Link</th>
-          <th>Codes Covered</th>
+          <th>Product Codes Covered</th>
           <th>Approved Diagnoses</th>
+          <th>Approved Diagnoses Codes</th>
           <th>Age Limitations</th>
           <th>Other Limitations</th>
           <th>State Mandate Apply</th>
@@ -42,6 +43,7 @@
           <th>Product Reimbursement Rate</th>
           <th>Reimbursement Methodology</th>
           <th>Reimbursement Fees</th>
+          <th>Other Notes</th>
           <th>Relationship to WIC</th>
           <th>Relationship to State Medicaid</th>     
           <th>Relationship to Other Programs</th>                 
@@ -58,8 +60,9 @@
           <td><%= guide.published_policies? ? "Yes" : (guide.published_policies == false ? "No" : "")  %></td>
           <td><%= guide.policy_name %></td>
           <td><%= guide.policy_link %></td>
-          <td><%= guide.codes_covered %></td>
+          <td><%= guide.product_codes_covered %></td>
           <td><%= guide.approved_diagnoses %></td>
+          <td><%= guide.approved_diagnoses_codes %></td>
           <td><%= guide.age_limitations %></td>
           <td><%= guide.state_mandate_apply? ? "Yes" : (guide.state_mandate_apply == false ? "No" : "")  %></td>
           <td><%= guide.major_medical_benefit? ? "Yes" : (guide.major_medical_benefit == false ? "No" : "")  %></td>
@@ -84,6 +87,7 @@
           <td><%= guide.reimbursement_link  %></td>
           <td><%= guide.product_reimbursement_rate  %></td>
           <td><%= guide.reimbursement_fees  %></td>
+          <td><%= guide.other_notes %></td>
           <td><%= guide.relationship_to_wic  %></td>
           <td><%= guide.relationship_to_state_medicaid  %></td>
           <td><%= guide.relationship_to_other_programs  %></td>
