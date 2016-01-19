@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151222191144) do
+ActiveRecord::Schema.define(version: 20160119135615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20151222191144) do
     t.string   "policy_name"
     t.string   "policy_number"
     t.string   "policy_link"
-    t.text     "codes_covered"
+    t.text     "product_codes_covered"
     t.text     "approved_diagnoses"
     t.text     "age_limitations"
     t.text     "other_limitations"
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 20151222191144) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "approved_diagnoses_codes"
+    t.text     "other_notes"
   end
 
   add_index "guides", ["name"], name: "index_guides_on_name", using: :btree
